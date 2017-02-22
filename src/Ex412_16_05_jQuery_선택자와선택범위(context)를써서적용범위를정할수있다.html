@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>jQuery 매개변수 context 는 선택자의 적용범위이다.</title>
+    <style>
+        *{ margin:0px; padding:0px; }
+        div
+        {
+            margin:5px; padding:3px;
+            border-width:3px;
+            border-style:solid;
+            border-color:Black;
+         }
+    </style>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(
+            function () {
+                $('div').click(
+                    function () {
+                        //...click 이벤트를 발생한 문서 객체 안에서 h1 태그와 p 태그를 선택하고 싶을때
+                        //...this 키워드를 $() 메서드의 두번째 매개변수로 넣어주면 된다.
+                        //...이벤트핸들러 안의 this 는 이벤트가 발생한 객체이므로 div 태그내의 h1, p 태그가
+                        //...선택범위가 된다.
+                        var header = $('h1', this).text();
+                        var paragraph = $('p', this).text();
+                        alert(header + '\n' + paragraph);
+                    }
+                ); //click.
+            } //function.
+        );      //ready.
+    </script>
+
+</head>
+<body>
+    <h2>jQuery 매개변수 context 는 선택자의 적용범위이다.</h2>
+
+    <div>
+        <h1>Header 1</h1>
+        <p>Paragraph</p>
+    </div>
+    <div>
+        <h1>Header 2</h1>
+        <p>Paragraph</p>
+    </div>
+    <div>
+        <h1>Header 3</h1>
+        <p>Paragraph</p>
+    </div>
+</body>
+</html>

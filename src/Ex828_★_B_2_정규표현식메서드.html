@@ -1,0 +1,263 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>정규표현식</title>
+    <script>
+        //...정규표현식 객체 생성 및 변수선언.
+        var regExp = /script/; //...방법1.추천.
+        var regExp99 = new RegExp('script'); //...방법2.
+        var str = 'Javascript jQuery Ajax';
+        /*...regExp 메서드, 문자열객체의 메서드와 함께 사용하는 것이 일반적임, 
+       		 ( 참조 : Ex201_★_7_20_String객체메서드받는값필요.html ).
+          ...test() : regExp 과 일치하면 true, 아니면 false.
+             exec() : regExp 과 일치하는 문자열을 반환함.
+        */
+        var output = regExp.test(str);
+        //...출력.
+        alert('1. ' + output);
+    </script>
+
+    <script>
+        var regExp2 = /script/;
+        var str2 = 'Javascript jQuery Ajax';
+        alert('2.1. ' + str2);
+
+        var output2 = str2.split(regExp2);
+
+        alert('2.2. ' + output2);
+    </script>
+
+    <script>
+        var regExp3 = /a/;
+        var str3 = 'Javascript jQuery Ajax';
+        alert('str3 = '+str3);
+
+        /*...메서드사용: 대체문자-1-.
+             $& : 일치하는 문자열,
+             $` : 일치하는 부분의 앞부분 문자열(숫자1키 왼쪽에 있는 기호),
+             $' : 일치하는 부분의 뒷부분 문자열(엔터키 왼쪽에 있는 기호),
+             $1, $2, $3 : 그룹.
+        */
+        var output3 = str3.replace(regExp3,'++$&++');
+        alert('메서드1 '+output3);
+
+        /*
+        //...replace() 매서드의 매개변수에 메서드사용-2-.
+        //...조금 쉽다.
+        var str4 = 'Javascript jQuery Ajax';
+        var output4 = str4.replace(regExp3,
+                                    function (value) {
+                                        return '+' + value + '+';
+                                    }
+            );
+        alert('메서드2 ' + output4);
+
+        //...메서드사용-3-.
+        //...regExp 를 괄호를 사용해서 묶으면 각각의 문자는 $1, $2, $3 문자로 대체됨.
+        var regExp5 = /(a)(q)(x)/;
+        var str5 = 'Javascript jQuery Ajax';
+        var output5 = str5.replace(regExp5, '+$1=$2=$3+');
+        alert('메서드5 ' + output5);
+        */
+    </script>
+    <script>
+       // 변수를 선언합니다.
+       //...정규표현식은가장 앞에 일치하는 문자만 찾아서 대체함.
+       //...모든 문자를 대체하려면 플래그 문자를 사용해야 함.
+       var regExp = /(a)(v)(a)/;
+       var string = 'Javascript jQuery Ajax';
+
+       // 메서드를 사용합니다.
+       var output = string.replace(regExp, '+$1=$2=$3+');
+
+       // 출력합니다.
+       alert('그룹 '+output);
+     </script>
+
+    <script>
+       /*...플래그 문자.
+            g : 전역비교 수행함.
+            i : 대소문자 가리지 않음.
+            m : 여러줄 검사 수행함.
+       */
+       var regExp98 = /Expression/im; //...간단한 방법으로 생성할 때 뒤에 붙여 사용함.
+       var regExp97 = new RegExp('Expression', 'im'); //...생성자사용시.
+
+       // 변수 선언.
+       var regExp96 = /a/ig;
+       var string = 'Javascript jQuery Ajax';
+
+       // 메서드 사용함..
+       var output96 = string.replace(regExp96, '++$&++');
+       alert('플래그 문자 '+ output96);
+     </script>
+
+    <script>
+       /*...앵커 문자 : 앞과 뒤를 구분해줌.
+            ex: ^ABC (맨 앞 문자가 ABC).
+                ABC$ (맨 뒤 문자가 ABC).
+       */
+       var regExp95 = /^j/ig;
+
+       var string = 'Javascript jQuery Ajax';
+
+       // 메서드 사용함..
+       var output95 = string.replace(regExp95, '++$&++');
+       alert('앵커 문자95 '+ output95);
+       
+       var regExp94 = /^j/igm;
+       var string = 'Javascript\njQuery\nAjax';
+       var output94 = string.replace(regExp94, '++$&++');
+       alert('앵커 문자94 '+ output94);
+     </script>
+
+
+    <script>
+       /*...메타 문자.
+            ex:  . : 아무 글자.
+                [abc]  : 괄호안의 글자.
+                [^abc] : 괄호안의 글자 제외.
+                [a-z]  : 알파벳 a 부터 z 까지.
+                [A-Z]  : 알파벳 A 부터 Z 까지.
+                [0-9]  : 숫자 0 부터 9 까지.
+       */
+       var regExp93 = /[aj]/ig;
+
+       var string = 'Javascript jQuery Ajax';
+
+       // 메서드 사용함..
+       var output93 = string.replace(regExp93, '++$&++');
+       alert('메타 문자93 '+ output93);       
+     </script>
+
+
+    <script>
+       /*...메타 문자.*/
+       var regExp92 = /......-......./;
+
+       var string = '170101-1234567';
+
+       // 메서드 사용함..
+       var output92 = string.replace(regExp92, '+$&+');
+       alert('메타 문자92 '+ output92);       
+     </script>
+
+
+    <script>
+       /*...메타 문자.
+            ex: \d  : 숫자.
+                \w  : 아무 단어(숫자포함).
+                \s  : 공백문자(탭, 띄어쓰기, 줄바꿈).
+                \D  : 숫자아님.
+                \W  : 아무 단어 아님.
+                \S  : 공백문자 아님.
+       */
+       var regExp91 = /\d\d\d\d\d\d-[1234]\d\d\d\d\d\d/;
+
+       var string = '170101-1234567';
+
+       // 메서드 사용함..
+       var output91 = string.replace(regExp91, '+$&+');
+       alert('메타 문자91 '+ output91);       
+     </script>
+
+
+    <script>
+       /*...수량 문자.
+            ex: a+  : a 가 적어도 1개 이상.
+                a*  : a 가 0 개 또는 여러 개.
+                a?  : a 가 0 개 또는 1개 .
+                a{5} : a 가 5개.
+                a{2,5} : a 가 2~5개.
+                a{2,}  : a 가 2개 이상.
+                a{,2}  : a 가 2개 이하.
+       */
+       var regExp90 = /\d{6}-[1234]\d{6}/;
+
+       var string = '170101-1234567';
+
+       // 메서드 사용함..
+       var output90 = string.replace(regExp90, '+$&+');
+       alert('수량 문자90 '+ output90);     
+       
+       
+       
+       var regExp89 = /(na)+/;
+
+       var string = 'banananaa';
+
+       // 메서드 사용함..
+       var output89 = string.replace(regExp89, '+$&+');
+       alert('수량 문자89 '+ output89);            
+     </script>
+
+
+    <script>
+       /*...선택 문자.
+            ex: (abc|def) : abc 또는 def.            
+       */
+       var string88 = prompt('소문자 또는 숫자로만 구성된 단어를 입력하세요', '단어');
+            
+       var regExp88 = /([0-9]|[a-z])/g;
+
+       // 출력합니다.
+       if(string88.replace(regExp88, '').length == 0){
+    	   alert('감사합니다');
+       }else{
+    	   alert('ㅠㅠ');
+       }
+     </script>
+
+
+    <script>
+       /*...선택 문자.
+            ex: (abc|def) : abc 또는 def.            
+       */
+
+        function isKoreanName(string) {
+            // 변수를 선언합니다.
+            var regExp = /([가-힣])/g;
+
+            // 메서드를 사용합니다.
+            var replacedString = string.replace(regExp, '');
+
+            // 확인합니다.
+            if (replacedString.length == 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        alert('한글여부 : ' + isKoreanName('훈민정음'));
+	</script>
+
+
+    <script>
+        function isEmail(string) {
+            // 변수를 선언합니다.
+            var regExp = /\w+@\w+\.\w+/;
+
+            // 확인합니다.
+            return regExp.test(string);
+        }
+        alert('E-mail 여부 : ' + isEmail('hi@email.com'));
+     </script>
+     
+   <script>
+        function addComma(number) {
+            var regExp = /(^[+-]?\d+)(\d{3})/;
+            var string = String(number);
+            while (regExp.test(string)) {
+                string = string.replace(regExp, '$1,$2');
+            }
+            return string;
+        }
+        alert('천단위콤마 추가 : ' + addComma('1000000'));
+    </script>
+     
+</head>
+<body>
+
+</body>
+</html>

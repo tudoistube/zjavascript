@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>$() 메서드 : 문서객체의 생성</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(
+            function(){
+                //...$('태그시작태그종료').html(); 뿐만 아니라 attr(), css(), text() 메서드도 사용가능함.
+                //...생성한 문서객체를 body 에 추가한다.
+                //...방법1.
+                $('<h1></h1>').html('$(); 메서드를 이용한 문서객체 생성').appendTo('body'); //appendTo.
+                //...방법2.
+                $('<h3>$(); 메서드를 이용한 문서객체 생성</h3>').appendTo('body'); //appendTo.            
+            }//function.
+        );//ready.
+    </script>
+    <script>
+        //...텍스트노드를 갖지 않는 문서객체의 생성.
+        $(document).ready(
+            function () {
+                //...방법1.
+                $('<img />').attr('src', 'twit_btn.jpg').appendTo('body'); //appendTo.
+                //...방법2.
+                $('<img />').attr(
+                    {
+                        src: 'landscape.jpg',
+                        height: 200
+                    }
+                ).appendTo('body'); //appendTo.
+                //...방법3.
+                //...실행하면 <img src="facebook_btn.jpg" style="width: 150px; height: 150px;"> 태그가 만들어진다.
+                //...jQuery 개발자는 img 태그의 크기는 스타일 속성으로 적용하는 것이 더 합리적이라고 생각한것 같다.
+                $('<img />',
+                    {
+                        src: 'facebook_btn.jpg',
+                        width: 150,
+                        height: 150
+                    }
+                ).appendTo('body'); //appendTo.
+            }//function.
+        );   //ready.
+    </script>
+</head>
+<body>
+    <h2>$() 메서드 : 문서객체의 생성</h2>
+</body>
+</html>

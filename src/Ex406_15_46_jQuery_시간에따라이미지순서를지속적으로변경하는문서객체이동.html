@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>시간에 따라 이미지의 순서를 지속적으로 변경하는 문서 객체의 이동실습</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(
+            function () {
+                $('img').css('width', 250); //css
+
+                //...2초마다 문서 객체의 순서를 변경함.
+                setInterval(
+                    function () {
+                        //...img 태그중 첫번째 문서객체를 body 태그 뒷부분으로 이동시킴.
+                        $('img').first().appendTo('body'); //appendTo.
+                    }, //function.
+                    4000
+                ); //setInterval().
+
+                
+            } //function.
+        );     //ready.
+    </script>
+
+</head>
+<body>
+    <h2>시간에 따라 이미지의 순서를 지속적으로 변경하는 문서 객체의 이동실습</h2>
+    <img src="Chrysanthemum.jpg"/>
+    <img src="Desert.jpg"/>
+    <img src="Hydrangeas.jpg"/>
+    <img src="landscape.jpg"/>
+    <img src="twit_btn.jpg"/>
+</body>
+</html>

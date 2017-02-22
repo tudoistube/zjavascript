@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>생성자함수선언후 상속</title>
+    <script>
+        //...생성자 함수 선언.
+        function Rectangle(w, h) {
+            var width = w;
+            var height = h;
+            this.getWidth = function () { return width; };
+            this.getHeight = function () { return height; };
+            this.setWidth = function (value) {
+                if (value < 0) {
+                    throw '길이는 음수이면 안됩니다.';
+                } else {
+                    width = value;
+                }//if.
+            };//setWidth.
+            this.setHeight = function (value) {
+                if (value < 0) {
+                    throw '높이는 음수이면 안됩니다.';
+                } else {
+                    height = value;
+                }//if.
+            };//setHeight.
+        }//Rectangle.
+
+        //...프로토타입으로 메서드 생성.
+        Rectangle.prototype.getArea = function () {
+            return this.getWidth() * this.getHeight();
+        }//getArea.
+        
+        
+
+        //...S.상속.        
+        //...생성자함수 Rectangle 을 기반으로 생성자 함수 선언.
+        function Square(length) {
+            this.base = Rectangle;
+            //...this.Rectangle(length, length); 와 같다.
+            this.base(length, length);
+        }//Square.
+
+        Square.prototype = Rectangle.prototype;
+        /*...★생성자함수 Square 의 프로토타입 constructor() 메서드에 Square 를 다시 넣는 부분은
+        없어도 정상적으로 작동함.
+        다만, 직접 square 객체의 constructor() 메서드를 출력하면, 생성자함수가 Square 이 아닌
+        Rectangle 을 가리키므로, 프로토타입의 생성자 함수를 재정의한 것임. */   
+        //Square.prototype.constructor = Square;        
+        //...E.상속.
+        
+        
+        //...변수선언.
+        var rectangle = new Rectangle(5, 7);
+        var square = new Square(5);
+        
+      	//...상속점검.
+        //alert('1. square instanceof Rectangle : ' + square instanceof Rectangle);
+        alert(square instanceof Rectangle);
+
+        //...출력.
+        alert('2.' + rectangle.getArea() + ' : ' + square.getArea());
+
+        //...call() 메서드를 사용한 상속.
+        //...call() 메서드는 다른 객체의 메서드를 자신의 메서드처럼 사용할 수 있게 함.
+        function Square2(length) {
+            Rectangle.call(this, length, length);
+        }//Square2.
+        Square2.prototype = new Rectangle();
+        Square2.prototype.constructor = Square2;
+
+        //...변수를 선언함.
+        var square2 = new Square2(5);
+        
+        //...상속점검.
+        //alert('3. square2 instanceof Rectangle = ' + square2 instanceof Rectangle);
+        alert(square2 instanceof Rectangle);
+        
+        alert('4. square2.getArea() = ' + square2.getArea());
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

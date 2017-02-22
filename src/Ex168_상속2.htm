@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> 상속편 </TITLE>
+  <script type = "text/javascript">
+	<!--
+		//JSP에서는 변수초기화 및 Getter, Setter함수만 구현하고
+		//나머지는 밖에서 prototype과 Getter, Setter함수로 구현한다.
+		function Rectangle(w, h){
+			var width = w;
+			var height = h;
+			this.getWidth = function(){
+				return width;
+			};
+			this.getHeight = function(){
+				return height;
+			};
+			this.setWidth = function(w){
+				width = w;
+			};
+			this.setHeight = function(h){
+				height = h;
+			};
+
+
+		};//function Rectangle(w, h){
+
+		//this는 생략할 수 없다.
+		//prototype에서는 var로 선언된 변수에 접근할 수 없다.
+		//정보은닉 vs 코드재사용성 중 정보은닉을 중시해야 한다.
+		//코드의 재사용성은 떨어지나 생성자로 함수를 옮긴다.
+		//Rectangle.prototype.getWidth = function(){
+		//	return this.width;
+		//};//Rectangle.prototype.getWidth = function(){
+
+
+		Rectangle.prototype.getArea = function(){
+			//생성자안에서만 쓰일수 있는 소스는 아래와 같지만,
+			//return width*height;
+			//prototype을 이용해서 getter함수를 호출한다.
+			return this.getWidth()*this.getHeight();
+		};
+
+		function Square(length){
+			//call함수를 사용할 것.
+			//Rectangle.call();
+			this.base = Rectangle;
+			//부모의 생성자를 호출함.
+			this.base(length, length);
+		};//function Square(length){
+
+		//javascript에서 상속은 수동으로 1:1로 상속받아야 할것들을
+		//개발자가 모두 구현한다고 보면 될듯...
+		Square.prototype = Rectangle.prototype;
+		Square.prototype.constructor = Square;
+		var sObj = new Square(5);
+		//alert(sObj.getArea());
+		//alert(sObj.getWidth());
+		//alert(Square.prototype.constructor);
+		alert(sObj instanceof Rectangle);
+
+		/*
+		var obj = new Rectangle(10, 10);
+		//alert(obj.getWidth());
+		alert(obj.getArea());
+		*/
+	//-->
+  </script>
+ </HEAD>
+
+ <BODY>
+  
+ </BODY>
+</HTML>

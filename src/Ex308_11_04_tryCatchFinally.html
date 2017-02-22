@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>tryCatchFinally</title>
+    <script>
+        try {
+            noExistedObject.noExistedMethod();
+            alert('try');
+        } catch (exception) {
+            alert('exception');
+        } finally {
+            alert('finally');
+        }
+
+        function registerEventListener(node, event, listener) {
+            try {
+                //...NonIE.
+                node.addEventListener(event, listener, false);
+            } catch (exception) {
+                //...IE.
+                node.attachEvent('on' + event, listener);
+            }//try.
+        }; //registerEventListener.
+
+        window.onload = function () {
+            var header = document.getElementById('header');
+            registerEventListener(header, 
+                                    'click',
+                                    function () { alert('Click'); }
+            ); //registerEventListener.
+        };   //onload.
+    </script>
+</head>
+<body>
+    <h2>tryCatchFinally</h2>
+    <h1 id="header">Click</h1>
+</body>
+</html>

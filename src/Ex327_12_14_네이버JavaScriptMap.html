@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Hi, Javascript!</title>
+    <script src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=8568f4afc17fa95d3dc4874681a95798">
+    </script>
+    <script>
+        window.onload = function () {
+            new nhn.api.map.Map('map', {
+                zoom: 10,
+                mapMode: 1
+            });
+        };
+    </script>
+</head>
+<body>
+    <h2>Naver 지도 API Javascript Map</h2>
+    <div id="map" style="width:700px; height:450px;"></div>
+</body>
+</html>

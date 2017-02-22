@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>jQuery attr() 속성에 관한 조회, 추가 등 모든 기능을 수행함</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(
+            function () {
+            //...$('선택태그').attr('알고자하는속성'); 문서객체의 속성을 알아냄.
+                var src = $('img').attr('src'); //attr.
+                //...대부분의 값을 알아내는 jQuery 메서드는 여러 개의 문서 객체를 선택했을때
+                //...첫번째 위치한 문서 객체의 값을 출력함.
+                alert(src);
+            } //function.
+        );   //ready.
+    </script>
+
+</head>
+<body>
+    <h2>jQuery attr() 속성에 관한 조회, 추가 등 모든 기능을 수행함.</h2>
+
+    <img src="Chrysanthemum.jpg"/>
+
+    <script>
+        //...속성추가.
+        //...방법1.
+        $(document).ready(function () {
+            $('img').attr('width', 200); //attr.
+        } //function.        
+        );  //ready.
+    </script>
+    <img src="Desert.jpg"/>
+    <script>
+        //...속성추가
+        //...방법2.
+        $(document).ready(
+            function () {
+                $('img').attr('width',
+                              function (index) {
+                                  return (index + 1) * 100;
+                              } //function.
+                ); //attr.
+            } //function.
+        );   //ready.
+    </script>
+    <script>
+        //...속성추가.
+        //...방법3.
+        $(document).ready(
+            function () {
+                $('img').attr({
+                    title: function (index) {
+                        return 'title_'+((index+1)*10);
+                    },
+                    alt: 'alt_value'
+                }
+                ); //attr.
+            } //function.
+        );   //ready.
+    </script>
+    <img src="Hydrangeas.jpg"/>
+    <img src="facebook_btn.jpg" />
+    <img src="landscape.jpg"/>
+    <script>
+            //...속성제거.
+            //...removeAttr() 메서드를 사용하면 모든 클래스 속성이 한번에 제거됨.
+            //...removeClass() 메서드를 사용하면 선택적으로 제거할 수 있음.
+            $(document).ready(
+            function () {
+                $('h1').removeAttr('data-index'); //removeAttr.
+            } //function.
+        );  //ready.
+    </script>
+    <h1 data-index="0">removeAttr() 속성제거-0</h1>
+    <h1 data-index="1">removeAttr() 속성제거-1</h1>
+    <h1 data-index="2">removeAttr() 속성제거-2</h1>
+</body>
+</html>

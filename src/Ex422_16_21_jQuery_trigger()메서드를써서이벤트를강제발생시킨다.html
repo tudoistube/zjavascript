@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>trigger() 메서드 : jQuery 이벤트 강제발생</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        //...h1 태그에 click 이벤트를 연결하고, 클릭하면 별이 추가됨.
+        //...setInterval() 함수를 이용해서 마지막에 위치한 h1 태그는 1초마다 자동으로 클릭이벤트를 실행하게 함.
+        $(document).ready(
+            function () {
+                $('h1').click(
+                    function () {
+                        $(this).html(
+                            function (index, html) {
+                                return html + '●';
+                            } //function.
+                        ); //html.
+                    } //function.
+                ); //click.
+
+                //...1초마다 함수실행.
+
+                //...setInterval() 메서드는 Window 객체의 메서드이다.
+                //...http://www.w3schools.com/jsref/met_win_setinterval.asp
+                //...그러므로, 여기서 this.setInterval(); 이라고 호출을 하게되면 $(document).setInerval();을 호출
+                //...하는 것이 되므로, document 객체 밑에 setInterval() 메서드가 없다고 브라우저콘솔에서
+                //...에러표기가 난다.
+                //...그래서, setInterval() 메서드를 직접 부르면 전역함수로 인식해서 원래 이 함수가 소속된
+                //...Window 객체로 가서 setInterval() 메서드를 찾아서 호출에 성공한다.
+                //...또는, Window.setInterval() 메서드로 직접 호출해도 된다.
+                setInterval(
+                    function () {
+                        $('h1').last().trigger('click');
+                    }, //function.
+                    2000
+                ); //setInterval.
+            } //function.
+        );          //ready.
+    </script>
+
+    <script>
+        $(document).ready(
+            function () {
+                $('h3').click(
+                    function () {
+                        $(this).html(
+                            function (index, html) {
+                                return html + '★';
+                            } //function.
+                        ); //html.
+                    } //function.
+                ); //click.
+
+                //...간단한 이벤트연결방식은 trigger() 메서드 대신 직접 이벤트를 생성시킨다.
+                setInterval(
+                    function () {
+                        $('h3').last().click();//click.
+                    }, //function.
+                    2000
+                ); //setInterval.
+            } //function.
+        );         //ready.
+    </script>
+    <script>
+        $(document).ready(
+            function () {
+                $('h5').click(
+                    function (event, data1, data2) {
+                        alert(data1 + ' : ' + data2); //alert.
+                    } //function.
+                ); //click.
+                //...이벤트강제발생.
+                $('h1').eq(1).trigger('click', [273, 52]);//trigger.
+            } //function.
+        );     //ready.
+    </script>
+</head>
+<body>
+    <h2>trigger() 메서드 : jQuery 이벤트 강제발생</h2>
+    <p>trigger() 메서드사용</p>
+    <h1>Start: </h1>
+    <h1>Start: </h1>
+
+    <p>간단한 이벤트는 직접 발생시킨다.</p>
+    <h3>Start: </h3>
+    <h3>Start: </h3>
+
+    <h5>TRIGGER</h5>
+</body>
+</html>

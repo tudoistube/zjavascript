@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>동적으로 메서드 추가</title>
+    <script>
+        //...빈객체 선언.
+        var student = {};
+        //...동적으로 속성추가.
+        student.name = '2B';
+        student.major = 'Java for Better World';
+        student.strength = 'Creative and Organized';
+        student.plane = 'Yes';
+
+        //...동적으로 toString() 메서드추가.
+        student.toString = function () {
+            var output = '';
+            for (var key in student) {
+                //...toString 메서드는 출력하지 않게 함.
+                if (key != 'toString') {
+                    output += key + '\t' + this[key] + '\n';
+                }//if.
+            }//for.
+            return output;
+        };//function.
+
+        alert('1. student.toString()='+student.toString());
+        alert('2. student.toString=' + student.toString);
+        //alert('student.toString1()=' + student.toString1());
+        //alert('student.toString1='+student.toString);
+
+        //...동적으로 속성제거.
+        delete (student.plane);
+        //alert('student.toString1()=' + student.toString1());
+        //...alert(student.toString());과 같다.
+        //alert('student.toString()='+student.toString());
+        alert('3. student()='+student.toString());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

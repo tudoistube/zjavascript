@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>문서객체제거</title>
+    <script>
+        window.onload = function () {
+            var willRemove = document.getElementById('will_remove');
+            //...아래는 body 문서 객체 바로 아래에 제거하고자 하는 문서 객체가 있을 때에만 
+            //   제거 가능한 구문임.
+            //document.body.removeChild(willRemove);
+            
+            //...일반적으로 문서객체를 제거할 때 다음과 같이 사용함.
+            //...부모노드로 이동한 후 부모노드에서 자식 노드를 삭제함.
+            willRemove.parentNode.removeChild(willRemove);
+        };
+    </script>
+</head>
+<body>
+    <h2>문서객체제거</h2>
+    <h1  id="will_remove">Header1</h1>
+</body>
+</html>

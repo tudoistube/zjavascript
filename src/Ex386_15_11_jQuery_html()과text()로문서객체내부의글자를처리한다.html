@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>자바스크립트 문서객체의 innerHTML 속성관련 jQuery 메서드</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        //...html() 메서드는 HTML 태그를 인식해서 문서객체 내부의 글자에 관한 모든 기능을 수행함.
+        //...아래 예제에서는 html() 메서드는 HTML 태그를 인식해서 첫번째 문서객체 내부의 글자내용을 출력한다.
+        $(document).ready(
+            function(){
+                var html=$('h1').html();//html.
+                alert(html);
+            }//function.
+        );//ready.
+    </script>
+
+    <script>
+        //...text() 메서드는 HTML 태그를 인식하지 않고 문서객체 내부의 글자에 관한 모든 기능을 수행함.
+        //...아래 예제에서는 text() 메서드는 HTML 태그를 인식하지 않고 선택한태그에 해당하는
+        //...문서객체 내부의 글자내용을 모두 출력한다.
+        $(document).ready(
+            function () {
+                var text = $('h3').text(); //text.
+                alert(text);
+            } //function.
+        ); //ready.
+    </script>
+
+</head>
+<body>
+    <h2>자바스크립트 문서객체의 innerHTML 속성관련 jQuery 메서드</h2>
+
+    <h1>html()-0</h1>
+    <h1>html()-1</h1>
+    <h1>html()-2</h1>
+
+    <h3>text()-0</h3>
+    <h3>text()-1</h3>
+    <h3>text()-2</h3>
+    
+    <br /><br />
+    <p></p>
+    문서객체 내부에 내용물을 추가.
+    <script>
+        //...문서객체 내부에 내용물을 추가하기.
+        //...html() 메서드는 html('매개변수'); 에서 매개변수의 HTML 태그를 인식해서 문자열을 삽입한다.
+        $(document).ready(
+            function () {
+                $('div').html(
+                    '<h1>$(선택태그).html() Method</h1>'
+                ); //html.
+            } //function.
+        );  //ready.
+    </script>
+    <div></div>
+
+    <script>
+        //...text() 메서드는 text('매개변수'); 에서 매개변수를 문자열 그대로 인식해서 내용으로 출력함.
+        $(document).ready(
+            function () {
+                $('div#text').text(
+                    '<h1>$().text() Method</h1>'
+                );//text.
+            } //function.
+        );  //ready.
+    </script>
+    <div id="text"></div>
+
+    <script>
+        //...html(function(index){}); 함수를 매개변수로 넣을때는 index를 함수의 매개변수로 넣는다.
+        $(document).ready(
+            function(){
+                $('div#html2').html(
+                    function(index){
+                        return '<h1>함수를 매개변수로 넣을때는 index 를 매개변수로 넣는다'+index+'</h1>';
+                    }//function.
+                );//html.
+            }//function.
+        );//ready.
+    </script>
+    <div id="html2"></div>
+
+    <script>
+        $(document).ready(
+            function () {
+                $('h1#html3').html(
+                //...html() 메서드의 매개변수로 입력한 함수의 매개변수를 두개 사용하면
+                //...두번째 매개변수에 원래 있던 HTML 내용이 들어감.
+                    function (index, html) {
+                        return '♡' + html + '♡';
+                    } //function.
+                ); //html.
+            } //function.
+        );    //ready.
+    </script>
+    <h1 id="html3">"$('h1').html(function(index, html){});"</h1>
+
+    <br /><br />
+    <p></p>
+    문서객체 삭제.
+    <script>
+        $(document).ready(
+            function () {
+            //...선택한 'h1' 태그이면서 id 가 'remove' 중 첫번째 문서객체를 삭제함.
+                $('h1#remove').first().remove();
+            } //function.
+        );  //ready.
+    </script>
+        <h1 id="remove">remove() 메서드 : 문서객체 삭제.</h1>
+        <h1 id="remove">remove() 메서드 : 문서객체 삭제.</h1>
+
+    <script>
+        $(document).ready(
+            function(){
+                $('div#empty').empty();            
+            }//function.
+        );//ready.
+    </script>
+    empty() 메서드 : 선택한 문서객체 이하 모든 문서객체를 삭제.
+    <div id="empty">
+        empty() 메서드 : 선택한 문서객체 이하 모든 문서객체를 삭제.
+        <h1>empty() 메서드 : 선택한 문서객체 이하 모든 문서객체를 삭제.-0</h1>
+        <h1>empty() 메서드 : 선택한 문서객체 이하 모든 문서객체를 삭제.-1</h1>
+    </div>
+</body>
+</html>

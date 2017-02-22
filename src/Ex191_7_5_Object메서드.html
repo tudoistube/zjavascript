@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Hi, Javascript!</title>
+    <script>
+        //...변수생성.
+        var obj = { property: 273 };
+        //...출력.
+        var output = '';
+        output += "HOP('property'): " + obj.hasOwnProperty('property') + '\n';//true.
+
+        output += "HOP('constructor'): " + obj.hasOwnProperty('constructor') + '\n';//false.
+
+        output += "PIE('property'): " + obj.propertyIsEnumerable('property') + '\n';//true.
+
+        output += "PIE('constructor'): " + obj.propertyIsEnumerable('constructor') + '\n';//false.
+
+        alert("1. " + output);
+        alert("1.1. " + output.valueOf());
+        
+
+        for (var key in obj) {
+            alert("2. " + obj[key]);
+            alert("2.1. " + obj[key].valueOf());
+        }//for.
+
+        //...toString() 메서드.
+        var obj = new Object();
+        //...출력.
+        alert("3. " + obj);
+        alert("4. " + obj.toString());
+
+        //...toString() 메서드는 객체를 문자열로 변환할때 자동으로 호출됨.
+        var student = {
+            name: '이름',
+            grade: '1학년',
+            toString: function () {
+                return this.name + ' : ' + this.grade;
+            }
+        };//student.
+
+        alert("5. " + student);        
+        alert("6. " + student.valueOf());
+    </script>
+</head>
+<body>
+
+</body>
+</html>

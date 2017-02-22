@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+	<script type = "text/javascript"
+			src = "jquery/jquery-1.9.1.js">
+	</script>
+	<style type = "text/css">
+		.reverse{
+			background-color:black;
+			color:#ffffff;
+		}
+	</style>
+	<style type = "text/css">
+		.show{
+			 display:none;
+		}
+	</style>
+	<script type = "text/javascript">
+		<!--
+			//onLoad()와 유사.
+			jQuery('document').ready(function(){
+			//var obj = document.getElementById("hid1");
+			//obj.style.color = '#ff0066';
+
+			//h1중 id = h인것만.
+			//jQuery('h1[id="h"]').css('color','red');
+			//h1인것은 모두.
+			//jQuery('h1').css('color','red');
+			//jQuery를 짧게 $로 축약함.홀수번째만.
+			$('h1:even').css('color','red');
+
+			//객체리터럴.
+			var arr = [
+				{name:'홍길동', hak:1, phone:'123-456-7890'},
+				{name:'김길동', hak:2, phone:'123-456-7891'},
+				{name:'박길동', hak:3, phone:'123-456-7892'},
+			];
+
+			
+			//for문 해당.
+			//$.~ 해당객체 전체.
+			$.each(arr, function(index, item){
+				alert(index+":"+item.name);
+			});//$each(arr, function(index, item{});			
+
+			//$('h1') 해당객체만 선택.
+			//$('h1').html(); 는 첫번째요소만 가져옴.
+			//var content = $('h1').html();
+			var content = $('h1').text();
+			alert(content);
+
+			$('#hid2').hover(function(){
+				//둘다같다.
+				//$('#hid2').addClass('reverse');
+				$(this).addClass('reverse');	
+			//if~ else~처럼 function()을 추가함.
+			},function(){
+				$(this).removeClass('reverse');	
+			});//$('#hid2').hover(function(){});
+
+			$('#hid3').hover(function(){
+				//둘다같다.
+				//$('#hid2').addClass('reverse');
+				$('#login').addClass('show');	
+			//if~ else~처럼 function()을 추가함.
+			},function(){
+				$('#login').removeClass('show');	
+			});//$('#hid3').hover(function(){});
+
+
+			}); //jQuery('document').ready()
+			
+			//html은 안에서는 읽기/밖에서쓰면 쓰기됨. 
+			//첫번째 값을 바꿔줌.
+			//$('h1').html("안녕");
+			//var content = $('h1').text();
+			//alert(content);
+
+		//-->
+	</script>
+ </HEAD>
+
+ <BODY>
+	<h1 id = "h"><font color = "blue"> Hi.Top </h1></h1>
+	<h1 class = "reverse"> Hi1 </h1>
+	<h1> Hi1 </h1>
+	<h1 id = "hid2"> Hi1 </h1>
+	<h1> Hi1 </h1>
+
+	<h1 id = "hid3"> 메뉴1 </h1>
+	<div id = "login">
+			<h1>로그인화면</h1>
+	</div>
+ </BODY>
+</HTML>

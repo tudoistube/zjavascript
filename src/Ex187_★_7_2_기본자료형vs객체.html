@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>객체와 기본자료형</title>
+    <script>
+        var primitiveNum = 273;
+        //...기본자료형에는 속성과 메서드를 추가할 수 없다.
+        //...추가하자마자 바로 버려진다.
+        primitiveNum.method = function () {
+            return 'primitiveNum Method'
+        };
+        //...메서드실행.
+        //...기본자료형에는 속성과 메서드를 추가할 수 없다.
+		/*...Uncaught TypeError: primitiveNum.method is not a function 발생.
+        var output = primitiveNum.method();
+        alert(output);
+        */
+
+        //...★기본자료형도 생성자함수의 프로토타입을 이용해서 메서드를 추가할 수 있다.
+        //...기본자료형의 속성이나 메서드를 사용하면 기본자료형이 자동으로 객체로 변환됨.
+        var primitiveNum2 = 373;
+        var objNum = new Number(273);
+        Number.prototype.method = function () {
+            return 'Method on Prototype';
+        }
+        var output2 = '';
+        output2 += primitiveNum2.method() + '\n';
+        output2 += objNum.method();
+        alert(output2);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

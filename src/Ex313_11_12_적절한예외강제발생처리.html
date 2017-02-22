@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>적절한 예외강제발생과 처리</title>
+    <script>
+        function divide(a, b) {
+        	//...자바스크립트는 특정숫자를 0으로 나눈다고 해서 문제가 발생하지 않으므로,
+        	//...이러한 일이 발생하면 알려줄 수 있게 강제로 예외를 발생시킴.
+            if (b == 0) {
+                throw 'DivideByZeroException';
+            } else {
+            	return a / b;
+            }//if.
+        }//divide.
+
+        try {
+            divide(10, 0);
+        } catch (exception) {
+        	alert('CATCH');  
+        }//try.
+    </script>
+</head>
+<body>
+    <title>적절한 예외강제발생과 처리</title>
+</body>
+</html>

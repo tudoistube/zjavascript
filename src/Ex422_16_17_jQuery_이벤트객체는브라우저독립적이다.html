@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>jQuery 이벤트객체는 브라우저독립적이다.</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(
+            function () {
+                //...canvas 객체에서 context를 추출하고 이벤트를 연결함.
+                var canvas = document.getElementById('canvas');
+                var context = canvas.getContext('2d');
+
+                //...이벤트연결.
+                //...문서객체와 마우스커서의 상대위치를 구함.
+                $(canvas).toggle(
+                    function (event) {
+                        var position = $(this).offset(); //offset.
+                        var x = event.pageX - position.left;
+                        var y = event.pageY - position.top;
+
+                        //...선그리기.
+                        context.beginPath();
+                        context.moveTo(x, y);
+                    }, //function.
+                    function (event) {
+                        var position = $(this).offset(); //offset.
+                        var x = event.pageX - position.left;
+                        var y = event.pageY - position.top;
+
+                        //...선그리기.
+                        context.lineTo(x, y);
+                        context.stroke();
+                    } //function.
+                ); //toggle.
+            } //function.
+        );            //ready.
+    </script>
+
+</head>
+<body>
+    <h2>jQuery 이벤트객체는 브라우저독립적이다.</h2>
+    canvas 태그는 HTML5 부터 지원. IE8 이하에선 지원하지 않음.
+    <canvas id="canvas" width="500" height="300">
+    
+    </canvas>
+</body>
+</html>

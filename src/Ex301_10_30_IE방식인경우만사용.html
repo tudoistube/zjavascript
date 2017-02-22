@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Hi, Javascript!</title>
+    <script>
+        //...인터넷익스플러러 이벤트 모델에서는 이벤트 핸들러의 this 키워드는 이벤트 발생 객체를
+        //...의미하지 않음.
+        //...이벤트 핸들러에서 this 키워드는 window 객체를 나타냄.
+        //...이벤트발생객체를 사용하려면 이벤트객체의 srcElement 속성을 사용해야함.
+        window.onload = function () {
+            var header = document.getElementById('myHeader');
+            //...IE 인 경우만 실행.
+	        //...IF 조건문으로 IE 이외의 브라우저에서는 attachEvent() 메서드가 사용되지 않게해야함.
+            if (header.attachEvent) {
+                var handler = function () {
+                    window.event.srcElement.style.color = 'red';
+                    window.event.srcElement.detachEvent('onclick', handler);
+                }; //handler.
+                header.attachEvent('onclick', handler);
+            } //if.
+        }       //function.
+    </script>
+</head>
+<body>
+    <h1 id="myHeader">Click</h1>
+</body>
+</html>

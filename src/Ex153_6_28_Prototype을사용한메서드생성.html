@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Hi, Javascript!</title>
+    <script>
+        function Student(name, kor, mat, eng, sci) {
+            this.이름 = name;
+            this.국어 = kor;
+            this.수학 = mat;
+            this.영어 = eng;
+            this.과학 = sci;
+        }//Student.
+
+        //...프로토타입을 사용한 메서드생성하면 메서드를 하나만 생성해도
+        //...모든 객체가 해당 메서드를 사용할 수 있음.
+        Student.prototype.getSum = function () { };
+        Student.prototype.getAverage = function () { };
+        Student.prototype.toString = function () { };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

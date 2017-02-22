@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>jQuery 문서객체의 삽입</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(
+            function () {
+                var h1 = '<h1>Header1</h1>';
+                var h2 = '<h2>Header2</h2>';
+                //...여러개의 문서객체를 한꺼번에 입력해서 생성함.
+                $('body').append(h1,h2,h1,h2);//append.
+            } //function.
+        );   //ready.
+    </script>
+    <script>
+        $(document).ready(
+            function () {
+                var content2 = [
+                        { name: '김태희', comment: '언제질릴까ㅎㅎ?' },
+                        { name: '임수정', comment: '보호본능' },
+                        { name: '소녀시대', comment: '선물세트' },
+                ]; //content2.                
+                //...문서객체를 추가함.
+                $('div').append(function (index) {
+                        var item = content2[index];
+                        var output = '';
+                        output += '<h1>' + item.name + '</h1>';
+                        output += '<h2>' + item.comment + '</h2>';
+                        return output;
+                    } //function.                
+                ); //append.
+            } //function.
+        );    //ready.
+    </script>
+</head>
+<body>
+    <h2>jQuery 문서객체의 삽입</h2>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

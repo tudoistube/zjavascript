@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Break</title>
+
+</head>
+<body>
+    <script>
+        bl = true;
+        for (var i = 0; bl; i++) {
+            alert(i + ' 번째 반복문입니다.');
+            
+            if(bl!=confirm('계속 할까요?')){
+            //if(!confirm('계속 할까요?')){	
+                break;
+            }//if.
+        }//for.
+        alert('프로그램 종료 bl ='+bl);
+    </script>
+</body>
+</html>

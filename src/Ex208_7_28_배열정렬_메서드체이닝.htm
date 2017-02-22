@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>배열정렬</title>
+    <script>
+        //...생성자함수 선언.
+        function Student(name, kor, mat, eng, sci) {
+            //...속성.
+            this.이름 = name;
+            this.국어 = kor;
+            this.수학 = mat;
+            this.영어 = eng;
+            this.과학 = sci;
+            //...메서드.
+            this.getSum = function () {
+                return this.국어 + this.수학 + this.영어 + this.과학;
+            };
+            this.getAverage = function () {
+                return this.getSum() / 4;
+            };
+            this.toString = function () {
+                return this.이름 + ' \t' + this.getSum() + ' \t' + this.getAverage();
+            };
+        } //Student.
+
+        var students = [];
+        students.push(new Student('태진', 30, 96, 95, 98));
+        students.push(new Student('태희', 96, 98, 92, 98));
+        students.push(new Student('태수', 50, 98, 92, 98));
+        students.push(new Student('태연', 92, 96, 95, 98));
+        students.push(new Student('태주', 82, 96, 95, 98));
+
+        var output = '이름\t총점\t평균\n';
+        for (var i in students) {
+            output += students[i].toString() + '\n';
+        } //for.
+        alert(output);        
+
+        //...sort() 메서드는 숫자오름이 아닌 문자오름차순 정렬이 기본.
+        //...숫자오름정렬시에는 함수사용.
+        /*
+        students.sort(function (left, right) {
+            return right.getSum() - left.getSum();
+        });
+        students = students.slice(0, 3);
+		*/
+        //...메서드체이닝으로 한줄로 표현함.
+        students.sort(function (left, right) {
+            return right.getSum() - left.getSum();
+        //...정렬후 slice(0, 3) 으로 1등부터 3등까지만 배열에 남김. 
+        }).slice(0, 3); //...slicke(0, 3); 0번째 인덱스부터 3개만 변수에 다시 할당함.
+
+        //...출력.
+        var output2 = '1등부터3등까지\n이름\t총점\t평균\n';
+        for (var i in students) {
+            output2 += students[i].toString() + '\n';
+        } //for.
+        alert(output2);
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

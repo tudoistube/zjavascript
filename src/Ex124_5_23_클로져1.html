@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Closure</title>
+    <!--...클로저 : 지역 변수를 남겨두는 현상.
+           이 지역변수는 반드시 리턴된 클로저 함수를 사용해서만 지역변수
+           output 을 사용할 수 있음.
+     -->
+    <script>
+        function outerFunction(name) {
+            var output = 'Hi, ' + name + '...!';
+            return function () {
+                alert(output);
+            }//function.
+        }//outerFunction.
+
+        outerFunction('SampleValue')();
+    </script>
+</head>
+<body>
+
+</body>
+</html>

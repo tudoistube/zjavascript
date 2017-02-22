@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>이벤트발생방법1</title>
+    <script>
+        //...객체.속성=이벤트핸들러.
+        //...이벤트속성=on+이벤트명.
+        window.onload = function () {
+            document.getElementById('header').onclick = function () {
+			//...이벤트핸들러 안의 this 는 이벤트가 발생한 객체이다.
+			//...★단, IE 이벤트 모델에서 this 는 window 객체임.
+			//   ( 참조 : Ex300_★_10_29_IE방식_이벤트제거시이벤트핸들러가꼭필요.html )
+                this.style.color = 'Green';
+                this.style.backgroundColor = 'Yellow';
+                alert(this);
+            }; //onclick.
+        };    //onload.
+    </script>
+</head>
+<body>
+    <h1 id="header">Click</h1>
+</body>
+</html>

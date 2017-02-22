@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>사용자지정효과</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <style>
+        div
+        {
+            width:50px; height:50px;
+            background-color:Orange;
+            position:absolute;
+         }
+    </style>
+    <script>
+        $(document).ready(
+            function () {
+                $('div').toggle(
+                    function () {
+                        //...style 태그의 position 스타일속성은 여기서 가장 중요한 부분이다.
+                        //...위치속성(left, top 속성) 을 변경하는 animate() 메서드를 사용하려면
+                        //...★position 속성이 absolute  또는 relative 이어야 함.
+                        $(this).animate(
+                            { left: 500 },
+                            'slow'
+                        ); //animate.
+                    }, //function.
+                    function () {
+                        $(this).animate(
+                            { left: 0 },
+                            'slow'
+                        ); //animate.
+                    } //function.
+                ); //toggle.
+            } //function.
+        );     //ready.
+    </script>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+</body>
+</html>

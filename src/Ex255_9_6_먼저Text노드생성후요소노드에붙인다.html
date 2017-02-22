@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Text노드를 먼저 생성하고 요소노드에 붙인다.</title>
+    <script>
+        window.onload = function () {
+            //...요소노드.
+            var header = document.createElement('h1');
+            //...텍스트노드.
+            var textNode = document.createTextNode('Hi DOM');
+
+            //...객체에 노드를 연결.
+            //...body 문서객체에 header 문서객체를 추가.
+            header.appendChild(textNode);
+            document.body.appendChild(header);
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

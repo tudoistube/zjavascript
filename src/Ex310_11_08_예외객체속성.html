@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>예외객체속성</title>
+    <script>
+        //...예외 : try~catch 구문으로 해결할 수 있는 것.
+        //...에러 : try~catch 구문으로 해결할 수 없는 것.
+        try {
+            var array = new Array(9999999999999999);
+        } catch (e) {
+            var output = '';
+            for(var i in e){
+                output += i + ':' + e[i] + '\n';
+            } //for.
+            alert(output);
+        }//try.
+    </script>
+</head>
+<body>
+
+</body>
+</html>

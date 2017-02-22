@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+ <HEAD>
+  <TITLE> Function간 통신 </TITLE>
+	<script type = "text/javascript">
+		//방법1.
+		function CallFuncTimes(otherFunc){
+			for(var i = 0; i < 3; i++){
+				otherFunc(i);
+			}//for.
+		};//function CallFuncTimes(otherFunc){
+
+
+		//펑션코드를 통째로 넘길수 있다.
+		CallFuncTimes(function(i){
+			alert("펑션이 인수로 넘어가는 방법1ㅎㅎ"+i);
+		});//CallFuncTimes(function(){
+
+		//방법2.
+		function CallFuncTimes2(otherFunc2){
+			for(var i = 0; i < 3; i++){
+				otherFunc2(i);
+			}//for.
+		};//function CallFuncTimes(otherFunc){
+
+		var fun2 = function(i){
+			alert("펑션이 인수로 넘어가는 방법2ㅎㅎ"+i);
+		};//var fun = function(){
+		//다음과 같이 할 수도 있다.
+		CallFuncTimes2(fun2);
+
+		//Inner펑션입장에서 this는 자신의 것과 중복되기 때문에
+		//Outer의 var에만 접근가능함.
+		function OutterFunc(){
+
+			var x = "Hello";
+
+			return(function(){
+				alert(x);
+			});//return(function(){
+		}//function OutterFunc(){.
+
+		//OutterFunc() 호출하는 시점에서는 이미 var x는 다 읽히고
+		//return 되어버려서 없어진 시점이다.
+		//그래서, 실제로는 x를 읽을 수 없으나
+		//Javascript 에서 예외적으로 CLOSURE 함수라고 이너펑션에서 아웃터의
+		//지역변수의 라이프사이클을 연장시켜줘서 출력이 되었음.
+		//OutterFunc()();
+
+	</script>
+ </HEAD>
+
+ <BODY>
+  
+ </BODY>
+</HTML>

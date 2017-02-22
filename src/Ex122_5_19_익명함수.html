@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Ananymous Function</title>
+    <script>
+        function callFunctionTenTimes(otherFunction) {
+            for (var i = 0; i < 3; i++) {
+                otherFunction();
+            }//for.
+        }//callFunctionTenTimes
+
+        callFunctionTenTimes(
+                //...익명함수를 매개변수로 전달함.
+        		function () {
+                	alert('Hi, Function...!');
+            	}
+        );//callFunctionTenTimes.       
+    </script>
+</head>
+<body>
+
+</body>
+</html>

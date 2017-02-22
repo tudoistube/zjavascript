@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>jQuery배열.</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(function () {
+            var array = [
+                { name: 'Hanbit Media', link: 'http://hanb.co.kr' },
+                { name: 'Naver', 		link: 'http://naver.com' },
+                { name: 'Daum', 		link: 'http://daum.net' },
+                { name: 'Paran', 		link: 'http://paran.com' }
+            ]; //array.
+
+            //...jQuery배열은 $.each() 메서드를 사용해서 관리한다.
+            $.each(array,
+		            function (index, item) {
+		                var output = '';
+		                output += '<a href="' + item.link + '">';
+		                output += '<h1>' + item.name + '</h1>';
+		                output += '</a>';
+		                document.body.innerHTML += output;
+		            } //function.
+		        );     //each.
+
+        } //function.
+        ); //ready.
+    </script>
+
+    <style>
+        .high_light_0{background:Green;}
+        .high_light_1{background:Blue;}
+        .high_light_2{background:Yellow;}
+        .high_light_3{background:Orange;}
+        .high_light_4{background:Red;}
+    </style>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(function () {
+            //...addClass() 메서드는 문서 객체에 class 속성을 추가하는 메서드임.
+            //...removeClass() 메서드는 문서 객체의 class 속성을 제거하는 메서드임.
+            //$('h1').addClass('hight_light'); //addClass.
+
+            $('h1').each(function (index, item) {
+                $(item).addClass('high_light_' + index); //addClass.
+                //...item 대신 this 키워드를 더 많이 사용한다.
+                //...$(this).addClass('high_light_' + index);
+                //...addClass 를 다음과 같이 표현할 수도 있다.
+                //...jQuery 메서드의 대부분에서 다음과 같이 할 수 있다.
+                //$(item).addClass(function (index) { return 'high_light_' + index }); //addClass.
+                
+                }//function.
+            ); //each.
+        } //function.
+        );   //ready.
+    </script>
+</head>
+<body>
+<h2>jQuery배열의 관리는 $.each(array, function(index, item){}); 메서드로 한다.</h2>
+
+    <h1>item - 0</h1>
+    <h1>item - 1</h1>
+    <h1>item - 2</h1>
+    <h1>item - 3</h1>
+    <h1>item - 4</h1>
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        //...객체를 생성하는 함수.
+        function makeStudent(name, kor, mat, eng, sci) {
+            var willReturn = {
+                //...속성.
+                이름: name,
+                국어: kor,
+                수학: mat,
+                영어: eng,
+                과학: sci,
+
+                //...메서드.
+                getSum: function () {
+                    return this.국어 + this.수학 + this.영어 + this.과학;
+                },//getSum.
+                getAverage: function () {
+                    return this.getSum() / 4;
+                },//getAverage.
+                toString: function () {
+                    return this.이름 + ' \t ' + this.getSum() + ' \t ' + this.getAverage();
+                }//getAverage.
+            };
+            return willReturn;
+        }//makeStudent.
+
+        var students = [];
+        //...함수를 사용해서 객체생성.
+        students.push(makeStudent('강윤경', 98, 98, 90, 95));
+        students.push(makeStudent('황현아', 98, 92, 82, 98));
+
+        //...생성자를 사용한 객체생성.
+        function Student(name, kor, mat, eng, sci) {
+            //...속성.
+            this.이름= name;
+            this.국어= kor;
+            this.수학= mat;
+            this.영어= eng;
+            this.과학 = sci;
+
+            //...메서드.
+            this.getSum = function () {
+                return this.국어 + this.수학 + this.영어 + this.과학;
+            };//getSum.
+            this.getAverage = function () {
+                return this.getSum() / 4;
+            };//getAverage.
+            this.toString = function () {
+                return this.이름 + ' \t ' + this.getSum() + ' \t ' + this.getAverage();
+            };//getAverage.
+
+        }//Student.
+
+        students.push(new Student('김태희', 98, 92, 82, 98));
+
+        var output = '이름\t 총점\t 평균\n';
+        for (var k in students) {
+            output += students[k].toString() + '\n';
+        }//for.
+        alert(output);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

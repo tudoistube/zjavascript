@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>JSON 객체 메서드</title>
+    <script>
+        var object = {
+            name: '2B',
+            motto: '2DoIs2Be'
+        };
+
+        var output = '';
+        for (var k in object) {
+            output += object[k];
+        }
+
+        alert('for : ' + output);
+
+        //...JSON 객체의 stringify() 메서드를 사용하면
+        //...개체의 속성을 출력하기 위해 for in 반복문을 쓰지 않아도 된다.
+        alert('JSON.stringify(object) : '+JSON.stringify(object));
+        
+
+        //...JSON 객체의 parse() 메서드 : JSON 형식의 문자열을 자바스크립트 객체로 만듦.
+        //...IE8 이하에서는 parse() 를 사용할 수 없음.
+        var output2 = '';
+        output2 = JSON.parse(JSON.stringify(object));
+        alert('JSON.parse(JSON.stringify(object)) '+output2.name + ' : ' + output2.motto);
+
+        //...Date 객체의 메서드.
+        var date = new Date();
+        alert('JSON.stringify(date.toJSON()) : ' + JSON.stringify(date.toJSON()));
+    </script>
+</head>
+<body>
+
+</body>
+</html>

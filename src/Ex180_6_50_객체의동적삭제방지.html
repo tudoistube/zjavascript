@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>객체의 동적 속성 삭제방지 설정.</title>
+    <script>
+        var person = {
+            name: '2B',
+            gender: 'Male',
+            region: 'MyHome, Korea',
+            hobby:'Refreshing'
+        };
+        //...객체의 속성삭제제한.
+        Object.seal(person);
+        //...객체의 속성삭제 가능유무.
+        alert(Object.isSealed(person));
+        delete person.gender;
+        alert(person.gender);
+        
+        //...Object.freeze(); 객체의 속성 삭제와 수정을 제한함.
+        //...Object.isFrozen(); 객체의 속성 삭제와 수정이 가능한지 확인함.
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

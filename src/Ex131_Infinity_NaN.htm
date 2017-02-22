@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+    	/*...infinity : 0으로 숫자를 나눈 값.
+    	     isFinite() : 무한대의 수인지 구분함.
+    	     NaN : 자바스크립트가 표현할 수 없는 숫자를 의미함.
+    	           NaN 은 스스로를 비교할 수 없음.
+    	     isNaN() : NaN 을 확인함.
+    	*/
+        // 변수를 선언합니다.
+        var value = -10 / 0; //...-Infinity
+    	alert('value = ' + value);
+
+        // 출력합니다.
+        if (value == Infinity) {
+            alert('value is Infinity');
+        } else {
+            alert('value is not Infinity');
+        }
+    </script>
+    <script>
+        if (NaN == NaN) {
+            alert('NaN == NaN');
+        } else {
+            alert('NaN != NaN');
+        }
+    </script>    
+</head>
+<body>
+
+</body>
+</html>

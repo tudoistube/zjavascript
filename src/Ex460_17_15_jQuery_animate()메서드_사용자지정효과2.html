@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        div
+        {
+                width:50px; height:50px;
+                background-color:Green;
+            }
+    </style>
+    <title>animate()메서드 : 사용자 지정효과</title>
+    <script src="http://code.jquery.com/jquery-1.7.js">
+    </script>
+    <script>
+        $(document).ready(
+            function () {
+                $('div').click(
+                    function () {
+                        //...문서객체의 스타일 속성추출.
+                        var width = $(this).css('width'); //css.
+                        var height = $(this).css('height'); //css.
+
+                        //...animate().
+                        $(this).animate(
+                            {
+                                //...방법1.
+                                //width:parseInt(width)+50,
+                                //height: parseInt(height) + 50
+                                //...방법2.
+                                width:'+=50',
+                                height:'+=50'
+                            },
+                            'slow'
+                        ); //animate.
+
+                    } //function.
+                ); //click.
+            } //function.
+        );      //ready.
+    </script>
+
+</head>
+<body>
+    <h2>animate()메서드 : 사용자 지정효과</h2>
+    animate() 메서드는 스타일 속성을 동적으로 변경해 애니메이션효과를 내는것으로
+    현재 스타일 속성을 알아내 추가 값을 부여해 상대적으로 애니메이션을 적용함.
+    <div></div>
+</body>
+</html>

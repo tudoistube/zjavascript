@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Geolocation</title>
+    <script src="http://code.jquery.com/jquery-1.7.js">
+    </script>
+    <script>
+        $(document).ready(
+            function () {
+                //...지오로케이션객체는 navigator 객체의 속성.
+                if (navigator.gelocation) {
+                    alert('Geolocation 지원하는 브라우저입니다.');
+                    //...geoCurrentPosition(): 현재위치를 실시간으로 받아옴.
+                    navigator.geolocation.getCurrentPosition(
+                    //...위치를 가져오는데 성공할 경우.
+                        function (position) {
+                            alert('위치수신성공');
+                            $.each(position.coords, function (key, item) {
+                                $('<h1></h1>').html('●' + key + ': ' + item).appendTo('body');
+                            });
+                         },
+                    //...위치를 가져오는데 실패할 경우.
+                        function (error) { alert('위치수신실패 : '+error.message); }
+                    ); //getCurrentPosition.
+                } else {
+                    alert('Geolocation 지원하지 않는 브라우저입니다.');
+                } //if.
+            } //function.
+        );       //ready.
+    </script>
+</head>
+<body>
+
+</body>
+</html>

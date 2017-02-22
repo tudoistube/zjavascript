@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>이벤트전달</title>
+    <style>
+        *{border:3px Solid Black;}
+    </style>
+    <script>
+        
+    </script>
+</head>
+<body>
+    <h2>이벤트전달</h2>
+    <!-- 
+        각 HTML 태그 내부의 이벤트속성을 실행함.
+        이벤트버블링방식 : 자식노드에서 부모노드 순으로 이벤트 전달.
+        이벤트캡쳐링방식 : 부모노드에서 자식노드 순으로 이벤트 전달.
+    -->
+
+    <div onclick="alert('outer_div')">
+        <div onclick="alert('inner_div')">
+            <h1 onclick="alert('header')">
+                <p onclick="alert('문단')">문단</p>
+            </h1>
+        </div>
+    </div>
+
+</body>
+</html>

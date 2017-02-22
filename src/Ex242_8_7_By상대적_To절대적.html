@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Untitled Page</title>
+</head>
+<body>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>By: 상대적, To: 절대적.</title>
+    <script>
+        var child = window.open('', '', 'width=300, height=200');
+        child.moveTo(0, 0);
+        //...1 초마다 상대좌표 이동.
+        this.setInterval(
+                function () {
+                    child.moveBy(10, 10); //(x, y)
+                },
+                1000
+            );  //setInterval.
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+</body>
+</html>

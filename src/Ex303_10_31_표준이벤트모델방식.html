@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>표준이벤트모델</title>
+    <script>
+        window.onload = function () {
+            var header = document.getElementById('myHeader');
+            //...표준이벤트모델은 IE 이벤트모델과 달리 이벤트이름을 매개변수로 사용함.
+            //...addEventListener(eventName, handler, useCapture);
+            //   useCapture 는 입력하지 않으면 자동으로 false 가 됨.
+            //...removeEventListener(eventName, handler);
+            //...IE9 부터 지원함.
+            header.addEventListener('click',
+                                     function () {
+                                         //...표준이벤트모델에서 이벤트핸들러 안에서 this 키워드는 이벤트 발생객체를 의미함.
+                                         //...IE방식의 IE 이벤트모델에서 this 키워드는 window 객체임.
+                                         this.innerHTML += '+';
+                                     } //function.
+            ); //header.addEventListener().
+        };     //window.onload.
+    </script>
+</head>
+<body>
+<h1 id="myHeader">Click</h1>
+표준이벤트모델, 모든 브라우저에서 실행가능.
+한번에 여러가지 이벤트 핸들러를 추가할 수 있다.
+addEventListener(이벤트이름, handler, useCapture);
+addEventListener(이벤트이름, handler);
+</body>
+</html>

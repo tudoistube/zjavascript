@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>String객체</title>
+    <script>
+/*
+ * ...cahrAt(position) : position 내의 문자를 리턴함.
+      charCodeAt(position) : position 내에 위치한 문자의 유니코드 번호를 리턴함.
+      
+      concat(string, ..., string).
+      
+      indexOf(searchString, position) : 앞에서 부터 일치하는 문자열의 위치를 반환함.
+      lastIndexOf(searchString, position) : 뒤에서 부터 일치하는 문자열의 위치를 반환함.
+      
+      match(regExp) : 문자열 내에 regExp 가 있는지 확인함.
+      replace(regExp, replacement) : regExp 를 replacement 로 바꾼뒤 반환함.
+      search(regExp) : regExp 와 일치하는 문자열의 위치를 반환함.
+      
+      slice(start, end) : 특정 위치의 문자열을 추출해 반환함.
+      split(separator, limit) : separator 로 문자열을 잘라 배열을 반환함.
+      
+      substr(start, count) : start 부터 count 만큼 문자열을 잘라서 반환함.
+      substring(start, end) : start 부터 end 까지 문자열을 잘라서 반환함.
+      toLowerCase().
+      toUpperCase().
+ * ...827p. 정규표현식(regExp) 관련 참조할 것(참조 : Ex828_B_2_정규표현식메서드.html ).      
+ */
+        var str='abcdefg';
+		//...String 객체의 메서드는 자신을 변화시키지
+		//...않고 리턴하므로, 받는값이 필요함.
+		str=str.toUpperCase();
+		alert(str);
+    </script>
+</head>
+<body>
+
+</body>
+</html>

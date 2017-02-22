@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Window객체의 타이머메서드</title>
+    <script>
+        window.onload = function () {
+            alert('3초 후 페이지는 종료됩니다.');
+            window.setTimeout(
+                    function () {
+                        window.close();
+                    }, 
+                    3000
+                );//setTimeout.
+        };
+    </script>
+</head>
+<body>
+
+</body>
+</html>

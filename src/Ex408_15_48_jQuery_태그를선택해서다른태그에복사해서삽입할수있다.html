@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>jQuery clone() 메서드</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        $(document).ready(
+            function () {
+                $('div').append(
+                //...h2 태그를 복사해서 div 태그에 삽입한다.
+                    $('h2').clone()
+                );//append.
+            } //function.
+        );  //ready.
+    </script>
+
+</head>
+<body>
+    <h2>jQuery clone() 메서드</h2>
+    <hr /><div></div><hr />
+</body>
+</html>

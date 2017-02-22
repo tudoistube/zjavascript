@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .outer
+        {
+            width:200px; height:200px; background:Orange; padding:50px; margin:10px;
+            }
+        .inner
+        {
+            width:100%; height:100%; background:Green;
+            }
+    </style>
+    <title>MouseOver vs MouseEnter 메서드</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script>
+        console.log("front");
+        $(document).ready(
+            function () {
+                //...★$('선택한태그.클래스명') 의 형식으로 클래스를 선택할 경우에는
+                //...항상 ".클래스명" 의 형식으로 점을 찍고 클래스명을 표기해야 선택이 된다.
+                $('.outer').mouseover(
+                    function () {
+                        $('body').append('<h1>MouseOver</h1>');
+                    } //function.
+                ).mouseenter(
+                    function () {
+                        $('body').append('<h1>MouseEnter</h1>');
+                    } //function.
+                ); //mouseenter.
+            } //function.
+        );             //ready.
+    </script>
+</head>
+<body>
+    <h2>MouseOver vs MouseEnter 메서드</h2>
+    <div class="outer">
+        <div class="inner">
+        
+        </div>
+    </div>
+</body>
+</html>

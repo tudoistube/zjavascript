@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <title>효과</title>
+    <script src="http://code.jquery.com/jquery-1.7.js"></script>
+    <script src="jquery.innerfade.js"></script>
+    <script>
+    //...방법1.
+        $(document).ready(
+            function () {
+                $('h1').click(
+                    function () {
+                        //...toggle() 메서드의 매개변수에 메서드가 두개이상 입력되면 이벤트와 관련된 메서드로 사용되지만,
+                        //...그외의 경우는 효과메서드로 적용됨.
+                        //$(this).next().toggle(
+                        //$(this).next().slideToggle(
+                        $(this).next().fadeToggle(
+                            'slow',
+                            function () {
+                                alert('Effect End...!');
+                            } //function.
+                        ); //toggle.
+                    } //function.
+                ); //click.
+            } //function.
+        );      //ready.
+    </script>
+    <script>
+    //...방법2.
+        $(document).ready(
+            function () {
+                $('h2').toggle(
+                    function () { 
+                        $(this).next().hide('slow');//hide.
+                    },//function.
+                    function () { 
+                        $(this).next().show('slow');//hide.                    
+                    } //function.
+                ); //toggle.
+            } //function.
+        );         //ready.
+    </script>
+    <script>
+        $(document).ready(
+            function () { }//function.
+        ); //ready.
+    </script>
+</head>
+<body>
+    <h1>클릭하면 OPEN & CLOSE</h1>
+    
+    <p><h1>show, hide, toggle 메서드가 있고, slide..., fade...의 2종류가 더 있다.</h1></p>
+
+    <div>
+        <h1>Lorem ipsum</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <h1>클릭하면 OPEN & CLOSE</h1>
+    <div>
+        <h2>Lorem ipsum</h2>
+        <p>Aenean vel augue dolor, at rhoncus tortor.</p>
+    </div>
+
+    <h2>클릭하면 OPEN & CLOSE</h2>
+    <div>
+        <h1>Lorem ipsum</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+    <h2>클릭하면 OPEN & CLOSE</h2>
+    <div>
+        <h2>Lorem ipsum</h2>
+        <p>Aenean vel augue dolor, at rhoncus tortor.</p>
+    </div>
+
+    <p><h1>InnerFade 플러그인</h1></p>
+    InnerFade 플러그인은 ul 태그에 적용하는 플러그인이고,
+    ul 태그에 플러그인을 적용하면 내부의 li 태그를 자동으로 화면 전환함.
+    <style>
+        *{margin:0px; padding:0px;}
+        ul{list-style:none;}
+    </style>
+    <script>
+        $(document).ready(
+            function () {
+                $('img').css(
+                    {
+                        width:250,
+                        height:250
+                    }
+                );//css.
+            } //function.
+        );  //ready.
+    </script>
+    <script>
+        $(document).ready(
+            function () {
+                $('#inner_fade').innerfade(
+                    {
+                        animationtype:'fade',
+                        speed:750,
+                        timeout:2000,
+                        type:'random',
+                        containerheight:'350px'
+                    }
+                ); //innerfade.
+            } //function.
+        );    //ready.
+    </script>
+    <ul id="inner_fade">
+        <li><img src="Chrysanthemum.jpg"/></li>
+        <li><img src="Desert.jpg"/></li>
+        <li><img src="Hydrangeas.jpg"/></li>
+        <li><img src="Jellyfish.jpg"/></li>
+        <li><img src="Koala.jpg"/></li>
+        <li><img src="Lighthouse.jpg"/></li>
+        <li><img src="Penguins.jpg"/></li>
+    </ul>
+</body>
+</html>

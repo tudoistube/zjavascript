@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>한번에 여러 개의 문서객체를 가져오기.</title>
+    <script>
+        window.onload = function () {
+            var headers = document.getElementsByTagName('h1');
+
+            for (var k = 0; k < headers.length; k++) {
+                headers[k].innerHTML = 'With getEelementsByTagName()';
+                alert(headers[k]);
+            } //for.
+
+            //...문서객체에는 for in 반복문 사용하면 문서객체 이외의 속성에도 접근하므로
+            //...사용하지 말것.
+            //...getElementsByTagName(), getElementsByName() 메서드로 가져온 객체는
+            //...꼭 단순 for 반복문을 사용할 것.
+            var output2 = '';
+            for (var k in headers) {
+                output2 += k + '\n';
+            } //for.
+            alert(output2);
+
+        };
+    </script>
+</head>
+<body>
+    <h1>Header1</h1>
+    <h1>Header2</h1>
+</body>
+</html>
