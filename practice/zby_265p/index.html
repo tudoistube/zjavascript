@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<title>...255p.template</title>
+<link href="../../_common/css/style.css" rel="stylesheet" type="text/css">
+<style>
+.zsubmenu h3 {
+	margin: 0 0 1em 0;
+	font-size: 16px;
+	cursor: pointer;
+	color: #5e78c1;
+}
+.zsubmenu h3:hover {
+	color: #b04188;
+	text-decoration: underline;
+}
+.zsubmenu ul {
+	margin: 0 0 1em 0;
+	list-style-type: none;
+	font-size: 14px;
+}
+/*...255p.서브메뉴가 닫힐때 스타일.*/
+.zhidden {
+	display: none;
+}
+</style>
+</head>
+<body>
+<header>
+<div class="header-contents">
+<h1>제목 : 255p.제이쿼리.</h1>
+<h2>부제목 : 토글 네비게이션.</h2>
+</div><!-- /.header-contents -->
+</header>
+<div class="main-wrapper">
+	<section>
+		<div class="zsidebar">
+			<div class="zsubmenu">
+				<h3>1. Getting Started</h3>
+				<ul class="zhidden">
+					<li><a href="">- 개요</a></li>
+					<li><a href="">- 설치</a></li>
+					<li><a href="">- 처음 실행</a></li>
+					<li><a href="">- 제거</a></li>
+				</ul>
+			</div>
+			<div class="zsubmenu">
+				<h3>2. How To Use</h3>
+				<ul class="zhidden">
+					<li><a href="">- 기본적인 실행 방법</a></li>
+					<li><a href="">- 원래 상태로 되돌리기</a></li>
+					<li><a href="">- 플러그인 작성</a></li>
+				</ul>
+			</div>
+		</div>
+	</section>
+</div><!-- /.main-wrapper -->
+<footer>JavaScript Samples</footer>
+<!--...256p. 본 HTML 파일이 로컬에 있으면 '//' 앞 부분에 'https:' 를 붙여야 함.-->
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script>
+
+	/*...258p.개발자도구에서 보면 클릭할때 마다 ul 태그에 'zhidden' 클래스가
+	     토글식으로 생겼다 사라졌다 반복함.
+			 ul 태그의 display 속성값이 none, block 으로 토글됨.
+	*/
+	$(document).ready(function(){
+		$('.zsubmenu h3').on('click', function(){
+			/*...264p.이벤트가 발생한 요소의 바로 다음 요소를 가져옴.
+			     toggleClass(지정한클래스) : 가져온 요소에 지정한클래스가 없으면 추가하고
+					                            있으면 삭제함.*/
+			$(this).next().toggleClass('zhidden');
+		});
+	});
+</script>
+</body>
+</html>

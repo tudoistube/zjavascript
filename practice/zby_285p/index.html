@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<title>...273p.template</title>
+<link href="../../_common/css/style.css" rel="stylesheet" type="text/css">
+<style>
+	.zlist {
+		overflow: hidden;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+	}
+	.zlist h2 {
+		margin: 0 0 2em 0;
+		font-size: 16px;
+		text-align: center;
+	}
+	.zseminar {
+		float: left;
+		margin: 10px 10px 10px 0;
+		border: 1px solid #23628f;
+		padding: 4px;
+		width: 25%;
+	}
+	.zcheck {
+		margin: 0;
+		padding: 8px;
+		font-size: 12px;
+		color: #ffffff;
+		background-color: #23628f;
+		text-align: center;
+		cursor: pointer;
+	}
+	.red {
+		background-color: #e33a6d;
+	}
+	.green {
+		background-color: #7bc52e;
+	}
+</style>
+</head>
+<body>
+<header>
+<div class="header-contents">
+<h1>제목 : 273p.Ajax 와 JSON.</h1>
+<h2>부제목</h2>
+</div><!-- /.header-contents -->
+</header>
+<div class="main-wrapper">
+	<section>
+		<ul class="zlist">
+			<li class="zseminar" id="js">
+				<h2>JavaScript 스터디</h2>
+				<p class="zcheck">공석 상황 확인</p>
+			</li>
+			<li class="zseminar" id="security">
+				<h2>보안 대책 강좌</h2>
+				<p class="zcheck">공석 상황 확인</p>
+			</li>
+			<li class="zseminar" id="uiux">
+				<h2>UI/UX 경쟁 대회</h2>
+				<p class="zcheck">공석 상황 확인</p>
+			</li>
+		</ul>
+	</section>
+</div><!-- /.main-wrapper -->
+<footer>JavaScript Samples</footer>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script>
+	//...274p.
+	$(document).ready(function(){
+		//...파일읽기.
+		$.ajax({url:'data.json', dataType:'json'})
+		/*...279p.JSON 은 배열형식이고, 각 배열요소는 속성과 속성값의 객체로 구성됨.
+		*/
+		 .done(function(data){
+				 $(data).each(function(){
+					 if(this.crowded === 'yes')
+					 {
+						 /*...280p. '#js'처럼 id 선택자를 만듦. */
+						 var idName = '#' + this.id;
+						 /*...280p. 하나의 태그에 여러개의 class 속성값을 지정할 수 잇음. */
+						 $(idName).find('.zcheck').addClass('crowded');
+					 }
+				 }); //...E.each.
+			 })
+			.fail(function(){
+				//...파일읽기 : 크롬에선 안됨.
+				window.alert('읽기 오류');
+			});
+
+			//...클릭하면 빈 좌석 상태를 표시함.
+			$('.zcheck').on('click', function(){
+				if($(this).hasClass('crowded')){
+					$(this).text('약간의 공석').addClass('red');
+				} else {
+					$(this).text('공석이 있습니다.').addClass('green');
+				}
+			});
+	});
+</script>
+</body>
+</html>
+<!--
+	...283p.jQuery list.
+		$('selector'), $(배열 또는 객체)
+		$.ajax()
+		.next() : 바로 다음 형제 요소.
+		.find('selector')
+		.children('selector')
+		.parent('selector')
+		.each(function(){})
+		.siblings()
+		.prev()
+		.addClass('zclass')
+		.removeClass('zclass')
+		.toggleClass('zclass') : 가져온 요소에 클래스가 있으면 삭제하고 없으면 추가함.
+		.text('ztext')
+		.text() : 텍스트를 읽음.
+		.hasClass('zclass') : 가져온 요소에 zclass 가 있는지 조사함.
+		.prepend(요소) : 가져온 요소에 자식 요소를 삽입함.
+		                 이미 자식 요소가 있으면 그 앞에 삽입함.
+		.append(요소) : 가져온 요소에 자식 요소를 삽입함.
+										이미 자식 요소가 있으면 그 뒤에 삽입함.
+		.attr('속성명', '값')
+		.attr('속성명')
+		.removed()
+		.slideDown(zspeed) : 가져온 요소를 표시함.
+		.slideUp(zspeed) : 가져온 요소를 감춤.
+		.slideToggle(zspeed) : 가져온 요소를 토글식으로 보였다가 감췄다 반복함.
+		.on('zEvent', function(){...})
+		event.preventDefault()
+-->
