@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<title>...198p.template</title>
+<link href="../../_common/css/style.css" rel="stylesheet" type="text/css">
+<style>
+.ztimer2 {
+	font-weight: bold;
+	font-size: 24px;
+	text-align: center;
+}
+.ztimer2 span {
+	font-size: 72px;
+}
+</style>
+</head>
+<body>
+<header>
+<div class="header-contents">
+<h1>제목 : 카운트다운 타이머.</h1>
+<h2>부제목 : 1초 단위로 재계산하기.</h2>
+</div><!-- /.header-contents -->
+</header>
+<div class="main-wrapper">
+<section>
+	<p>
+		지금부터 <span id="ztimer"></span> 이내에 주문하면 50% 할인^ ^!!!
+	</p>
+	<p>
+		<h3>지금부터 도쿄올림픽까지...</h3>
+		<p class="ztimer2">
+			남은 시간 <span id="zday"></span> 일
+			          <span id="zhour"></span> 시간
+								<span id="zmin"></span> 분
+								<span id="zsec"></span> 초
+		</p>
+	</p>
+</section>
+</div><!-- /.main-wrapper -->
+<footer>JavaScript Samples</footer>
+<script>
+	var countdown = function(p_due)
+	{
+		var now = new Date();
+		var rest = p_due.getTime() - now.getTime(); //...단위는 밀리초임.
+		var sec = Math.floor(rest / 1000 % 60);
+		var min = Math.floor(rest / 1000 / 60) % 60;
+		var hours = Math.floor(rest / 1000 / 60 / 60) % 24;
+		var days = Math.floor(rest / 1000 / 60 / 60 / 24);
+		var count = [days, hours, min, sec];
+
+		return count;
+	}
+
+
+	var goal = new Date();
+	goal.setHours(23);
+	goal.setMinutes(59);
+	goal.setSeconds(59);
+	/*
+	console.log(countdown(goal));
+
+	var zcounter = countdown(goal);
+
+	var ztime = '201p.' + zcounter[1] + '시간 '
+						+ zcounter[2] + '분'
+						+ zcounter[3] + '초';
+
+	//document.getElementById('ztimer').textContent = ztime;
+	*/
+	var addZero = function(p_num, p_digit)
+	{
+		var strNum = String(p_num);
+		while(strNum.length < p_digit)
+		{
+			strNum = '0' + strNum;
+		}
+		return strNum;
+	}
+
+	var zrecalc = function()
+	{
+		var zcounter = countdown(goal);
+
+		for(var i = 0; i < zcounter.length; i++)
+		{
+			//console.log('before for...' + zcounter[i]);
+			if(zcounter[i] < 10)
+			{
+				zcounter[i] = addZero(zcounter[i], 2);
+			}
+			//console.log('after for...' + zcounter[i]);
+		}
+
+		var ztime = '206p.' + zcounter[1] + '시간 '
+							+ zcounter[2] + '분'
+							+ zcounter[3] + '초';
+
+		document.getElementById('ztimer').textContent = ztime;
+
+		zrefresh();
+	}
+
+	var zrefresh = function()
+	{
+		setTimeout(zrecalc, 1000);
+	}
+
+	zrecalc();
+
+</script>
+
+<script>
+	var goal2 = new Date(2020, 7, 24);
+
+	var zrecalc2 = function()
+	{
+		var zcounter2 = countdown(goal2);
+
+		for(var i = 0; i < zcounter2.length; i++)
+		{
+			//console.log('before for...' + zcounter[i]);
+			if(zcounter2[i] < 10)
+			{
+				zcounter2[i] = addZero(zcounter2[i], 2);
+			}
+			//console.log('after for...' + zcounter[i]);
+		}
+
+		document.getElementById('zday').textContent = zcounter2[0];
+		document.getElementById('zhour').textContent = zcounter2[1];
+		document.getElementById('zmin').textContent = zcounter2[2];
+		document.getElementById('zsec').textContent = zcounter2[3];
+
+		zrefresh2();
+	}
+
+	var zrefresh2 = function()
+	{
+		setTimeout(zrecalc2, 1000);
+	}
+
+	zrecalc2();
+
+</script>
+</body>
+</html>

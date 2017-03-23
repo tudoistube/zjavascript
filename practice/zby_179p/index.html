@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<title>...171p.template</title>
+<link href="../../_common/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+<div class="header-contents">
+<h1>제목 : Date, 시간 표기.</h1>
+<h2>부제목</h2>
+</div><!-- /.header-contents -->
+</header>
+<div class="main-wrapper">
+<section>
+	<p>
+		171p.자유 접속 기한 : <span id="time"></span><br/>
+		                <span id="time2"></span>
+	</p>
+</section>
+</div><!-- /.main-wrapper -->
+<footer>JavaScript Samples</footer>
+<script>
+var addZero = function(p_num, p_digit)
+{
+	var strNum = String(p_num);
+	while(strNum.length < p_digit)
+	{
+		strNum = '0' + strNum;
+	}
+	return strNum;
+}
+
+var now = new Date();
+var year = now.getFullYear() + 1;
+var month = now.getMonth() + 1;
+var date = now.getDate() + 1;
+var hour = now.getHours() + 1;
+var min = now.getMinutes();
+if(min < 10)
+{
+	min = addZero(min, 2)
+} else if (min >= 60) {
+	min = min % 60;
+	min = addZero(min, 2);
+}
+
+var ampm = '';
+if(hour < 12)
+{
+	ampm = 'AM';
+} else {
+	ampm = 'PM';
+}
+
+var output = year + '/' + (month + 1) + '/' + date
+						+ ' ' + (hour % 12) + ':' + min + ' ' + ampm;
+document.getElementById('time').textContent = output;
+
+var tzone = now.getTimezoneOffset();
+var output2 = tzone;
+document.getElementById('time2').textContent = output2;
+</script>
+</body>
+</html>

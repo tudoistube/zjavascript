@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<title>...144p.template</title>
+<link href="../../_common/css/style.css" rel="stylesheet" type="text/css">
+<style>
+	table {
+		border-collapse: collapse;
+	}
+	td {
+		padding: 4px 8px;
+		border: 1px solid #23628f;
+	}
+</style>
+</head>
+<body>
+<header>
+<div class="header-contents">
+<h1>제목 : 객체.</h1>
+<h2>부제목</h2>
+</div><!-- /.header-contents -->
+</header>
+<div class="main-wrapper">
+<section>
+	<table>
+		<tr>
+			<td id="title"></td>
+			<td id="hourPerDaily"></td>
+			<td id="daysPlanned"></td>
+		</tr>
+	</table>
+</section>
+</div><!-- /.main-wrapper -->
+<footer>JavaScript Samples</footer>
+<script>
+	var myPlan = {title : '자바스크립트 공부', hourPerDaily : 5, daysPlanned : 3};
+	console.log('myPlan : ' + myPlan);
+	console.log('title : ' + myPlan.title);
+	console.log('hourPerDaily : ' + myPlan['hourPerDaily']);
+	myPlan.hourPerDaily = 3;
+	console.log('hourPerDaily : ' + myPlan['hourPerDaily']);
+
+	console.log('152p.객체 프로퍼티를 이용해서 객체읽기 : ........................');
+	for(var p in myPlan)
+	{
+		console.log('myPlan['+p+'] : ' + p + ' : ' + myPlan[p]);
+	}
+
+	document.getElementById('title').textContent = myPlan.title;
+	document.getElementById('hourPerDaily').textContent = myPlan.hourPerDaily + 'Hr';
+	document.getElementById('daysPlanned').textContent = myPlan.daysPlanned + 'Days';
+</script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<title>...91p.template</title>
+<link href="../../_common/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<header>
+<div class="header-contents">
+<h1>제목 : 숫자맞히기.</h1>
+<h2>부제목 : 다양한 비교 연산자들.</h2>
+</div><!-- /.header-contents -->
+</header>
+<div class="main-wrapper">
+<section>
+
+</section>
+</div><!-- /.main-wrapper -->
+<footer>JavaScript Samples</footer>
+<script>
+	var num = Math.floor(Math.random()*6);
+	var ans = parseInt(window.prompt('91p.숫자맛히기, 0 ~ 5 까지의 숫자를 입력하세요.'));
+	console.log('num : ' + num);
+	console.log('ans : ' + ans);
+
+
+	var msg;
+	if(ans === num) {
+		msg = '딩동댕! 정답입니다!';
+	} else if (ans < num) {
+		msg = '더 크게 생각하세요.';
+	} else if (ans > num) {
+		msg = '더 작게 생각하세요.';
+	} else {
+		msg = '0 ~ 5 까지만 생각하세요.';
+	}
+	window.alert(msg);
+</script>
+</body>
+</html>

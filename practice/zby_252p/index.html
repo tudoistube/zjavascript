@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<title>...243p.template</title>
+<link href="../../_common/css/style.css" rel="stylesheet" type="text/css">
+<style>
+/*...244p.*/
+.zslide {
+	margin : 0 auto;
+	border: 1px solid green;
+	width: 720px;
+	background-color: yellowgreen;
+}
+img {
+	max-width: 100%;
+}
+.ztoolbar {
+	overflow: hidden;
+	text-align: center;
+}
+.znav {
+	display: inline-block;
+}
+#zprev {
+	float: left;
+	width: 40px;
+	height: 40px;
+	background: url(images/prev.png) no-repeat;
+}
+#znext {
+	float: left;
+	width: 40px;
+	height: 40px;
+	background: url(images/next.png) no-repeat;
+}
+/*...248p.*/
+#zpage {
+	display: inline-block;
+	float: left;
+	margin-top: 8px;
+	height: 32px;
+	color: white;
+}
+</style>
+</head>
+<body>
+<header>
+<div class="header-contents">
+<h1>제목 : 슬라이드.</h1>
+<h2>부제목</h2>
+</div><!-- /.header-contents -->
+</header>
+<div class="main-wrapper">
+<section>
+	<!--...243p. -->
+	<div class="zslide">
+		<div class="zimage_box">
+			<img id="zmain_image" src="images/image1.jpg">
+		</div>
+		<div class="ztoolbar">
+			<div class="znav">
+				<div id="zprev"></div>
+				<span id="zpage"></span>
+				<div id="znext"></div>
+			</div>
+		</div>
+	</div>
+</section>
+</div><!-- /.main-wrapper -->
+<footer>JavaScript Samples</footer>
+<script>
+	//...245p.
+	var zarrImages = ['images/image1.jpg', 'images/image2.jpg', 'images/image3.jpg',
+								'images/image4.jpg', 'images/image5.jpg' ];
+	var zcurrent = 0;
+
+	//...249p.
+	var getPageNum = function()
+	{
+		document.getElementById('zpage').textContent = (zcurrent + 1)
+																								 + ' of '
+																								 + zarrImages.length;
+	}
+	getPageNum(); //...249p.
+
+	var changeImage = function(p_num)
+	{
+		if(zcurrent + p_num >= 0 && zcurrent + p_num < zarrImages.length)
+		{
+			zcurrent += p_num;
+			document.getElementById('zmain_image').src = zarrImages[zcurrent];
+			getPageNum(); //...249p.
+		}
+	};
+
+	/*...251p.화면에는 표시되지 않지만, 메모리내에 img 태그가 존재하여
+	     해당 이미지 파일을 미리 다운로드하여 캐시하면, 큰 사이즈의 이미지를
+			 다운로드하는데 시간이 걸리지 않게 함.
+	*/
+	var preloadImage = function(p_path)
+	{
+		var zimgTag = document.createElement('img');
+		zimgTag.src = p_path;
+	}
+
+	for (var i = 0; i < zarrImages.length; i++)
+	{
+		preloadImage(zarrImages[i]);
+	}
+
+	document.getElementById('zprev').onclick = function()
+	{
+		changeImage(-1);
+	}
+	document.getElementById('znext').onclick = function()
+	{
+		changeImage(1);
+	}
+
+</script>
+</body>
+</html>
