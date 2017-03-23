@@ -1,9 +1,9 @@
 # ZJavascript Basic  
-##Javascript Basic study practice ('처음 만나는 자바스크립트' 책 보고 실습한 소스)  
+## Javascript Basic study practice ('처음 만나는 자바스크립트' 책 보고 실습한 소스)  
 
  ![처음 만나는 자바스크립트 표지](http://image.kyobobook.co.kr/images/book/large/777/l9791185890777.jpg)
 
-###Practised sources from a book ['처음 만나는 자바스크립트'](http://jpub.tistory.com/661 "a good basic book on javascript and jQuery" )  
+### Practised sources from a book ['처음 만나는 자바스크립트'](http://jpub.tistory.com/661 "a good basic book on javascript and jQuery" )  
 
     
 책 보면서 실습한 소스임.  
