@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> ID 선택자  </title>
+<!-- jQuery library -->
+<script src="jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+
+<div id="container">
+
+ <header>
+   <h2> Welcome mySite </h2>
+ </header>
+
+ <nav>
+   <ul class="list">
+       <li id="sub">One</li>
+       <li id="main">Two</li>
+       <li id="total">Three</li>
+  </ul>
+ </nav>
+
+</div>
+
+<!---------- jQuery code Start ---------->
+
+<script>
+/*...83p.여러개의 id 가 있을 경우, #id 선택자로 선택하면 그 중 첫번째만 선택됨.
+        id 는 원래 독립적으로 구별되어야 하는 원칙을 지킬것.
+*/
+  $("#main").css({backgroundColor:"#9AB92E", outline:"1px dashed #05184D"} );
+</script>
+
+</body>
+</html>

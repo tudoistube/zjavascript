@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> start jQuery </title>
+
+<style>
+  div{width:100px; height:100px; background-color:#0FF;}
+</style>
+
+<!-- jQuery library -->
+<script src="jquery-1.7.2.min.js"></script>
+<!--...78p.문서준비이벤트.
+       head 태그에 jQuery 코드를 넣을때는 문서 준비 이벤트가 필요함.
+       1. 문서 준비 이벤트는 ready 임.
+          HTML 이 모두 로딩된 후 HTML 을 동적으로 조작할 수 있음.
+       2. jQuery() 함수에 매개 변수로 직접 함수를 넘겨줌.
+       jQuery(document).ready( function(){...code...})
+       =
+       jQuery(function(){...code...})
+       =
+       $( function(){...code...})
+-->
+<script>
+$(function() {
+	  $("div").click(function(e) {
+         console.log($(this));
+          $(this).text("Hello World");
+    });
+})
+</script>
+</head>
+
+<body>
+
+  <div></div>
+<!--...78p.문서준비이벤트(ready)가 필요없는 부분.
+       필요한 모든 HTML 이 로딩되었으므로, 바로 <script> ...</script> 에
+       필요한 처리를 하면 됨.
+-->
+</body>
+
+</html>

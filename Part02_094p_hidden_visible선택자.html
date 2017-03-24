@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> hidden, visible 선택자 </title>
+<!-- jQuery library -->
+<script src="jquery-1.7.2.min.js"></script>
+
+</head>
+<body>
+
+<div id="container">
+
+   <ul class="nav1">
+     <li style="display:none"> apple </li>
+     <li> banana </li>
+     <li> grape </li>
+   </ul>
+
+   <ul class="nav2">
+     <li> lion </li>
+     <li style="display:none"> tiger </li>
+     <li> fox </li>
+   </ul>
+
+</div>
+
+<!---------- jQuery code Start ---------->
+<script>
+/*...94p.visibility:hidden 또는 opacity:0 은 여전히 일정 공간을 차지하고 있어서,
+     :hidden 선택자는 선택하지 않음.
+*/
+function showTime(){
+ $("li:hidden").show(3000)
+}
+
+setTimeout("showTime()",1000);
+
+</script>
+
+</body>
+</html>
