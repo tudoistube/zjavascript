@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title> one page scroll </title>
+
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.scrollTo-min.js"></script>
+
+<style>
+/********************** navi**********************/
+*{margin:0px; padding:0px;}
+
+#navigation{
+	/* ...345p.position:fixed; 로 하여 #navigation 은 계속 위치를 유지하게 함.*/
+	position:fixed;
+	top:0px;
+	left:0px;
+	height:80px;
+	width:100%;
+	background:yellowgreen;
+	text-align:center;
+	font-size:14px;
+}
+/* ...346p.#navigation 의 목록 스타일을 없애고, 마진을 사용해서 왼쪽으로 이동시킴.*/
+#navigation ul {list-style:none; margin-top:50px; margin-left:400px;}
+/* ...346p.display:inline; 을 사용하여 가로 형식으로 배치함.*/
+#navigation li {display:inline; margin-right:10px;}
+#navigation li a { text-decoration:none; color:#FFF;}
+#navigation li a:hover {color:#0F0;}
+/* ...346p.margin:0 auto;
+http://kin.naver.com/qna/detail.nhn?d1id=1&dirId=105&docId=189991293&qb=Y3NzIGF1dG8=&enc=utf8&section=kin&rank=2&search_sort=0&spq=0&pid=TLy1IdpySD8ssZSiPE4ssssssJC-367553&sid=KD3B1e3/ce0yVjddwmfZMw%3D%3D
+*/
+#wrap {width:100%; /*800px;*/
+	     margin:0 auto;margin-top:80px;   }
+#green{background:green; height:700px;}
+#blue{background:blue; height:700px;}
+#yellow{background:yellow; height:700px;}
+#cyan{background:cyan; height:700px;}
+
+
+</style>
+</head>
+
+<body>
+
+<div id="navigation">
+    <ul>
+        <li><a href="#green"> GREEN </a> </li>
+        <li><a href="#blue"> BLUE </a> </li>
+        <li><a href="#yellow"> YELLOW </a> </li>
+        <li><a href="#cyan"> CYAN </a> </li>
+    </ul>
+</div>
+
+<div id="wrap">
+    <div id="green"></div>
+    <div id="blue"></div>
+    <div id="yellow"></div>
+    <div id="cyan"></div>
+</div>
+<script>
+var scrollSpeed = 1000;
+
+/* ...347p.#navigation 에서 클릭한 a 태그의 href 속성값을 매개변수로 전달받음.*/
+function pageScroll(obj) {
+
+	if(!obj){
+		$.scrollTo({ top:0, left:0 }, scrollSpeed, {easing:"easeInOutQuint"});
+	}else {
+		/* ...347p.매개변수가 전달되면, 그 값의 top 속성값을 알아낸 후 그 위치까지
+		           scrollTo 를 사용하여 이동함.
+
+			 ...346p.offset() : 요소의 위치를 정확하게 알기 위해 사용됨.
+			         offset() 은 요소의 top,left 의 값을 반환함.
+							 요소의 top 위치를 구하려면 $(SELECTOR).offset().top 으로 구함.
+
+			 ...346p.스크롤된 요소들이 맨 위로 올라가면 고정된 #navigation 이
+			         고정된 #navigation 의 내용을 가리게 되므로
+							 #navigation 의 높이(80px)만큼 위치 이동을 조절해줌.
+							 상단에서 80px 만큼 아래에 위치한 값.*/
+		var topPos =$(obj).offset().top - 80;
+		$.scrollTo({top:topPos, left:0}, scrollSpeed, {easing:"easeInOutQuint"});
+	}
+};
+
+$("ul li a").click( function() {
+	   var goPage = $(this).attr("href");
+	   pageScroll(goPage);
+		 /* ...348p.a 태그의 href 로 이동하는 것을 방지함.*/
+	   return false;
+});
+
+
+</script>
+
+</body>
+</html>

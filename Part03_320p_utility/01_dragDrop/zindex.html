@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>drag and drop 기능</title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="jquery-ui.min.js"></script>
+
+<style>
+
+div.draggable {
+	float:left;
+	width: 160px;
+	height: 160px;
+	padding:10px 0px 0px 20px;
+	background:url(post.png) no-repeat;
+}
+
+div.invert {  background:url(post2.png) no-repeat;}
+
+
+</style>
+
+</head>
+
+<body>
+
+
+
+
+<div class="draggable">
+	<p>title</p>
+</div>
+
+<div  class="draggable">
+	<p>Lorem ipsum dolor <br /> sit amet, consecteturlit. Aenean</p>
+</div>
+
+<div  class="draggable">
+	<p>Drag me around</p>
+</div>
+
+<div id ="gg" class="draggable">
+	<p>Drag me around</p>
+	<img src="img/effect1.jpg" width="130" height="80" />
+</div>
+
+<script>
+/* ...325p.draggable() : 요소를 drag 와 drop 할 수 있게 함.
+           $("div").draggable();
+					 $("div").draggable({axis:"y"});
+					 $("div").draggable({containment:"parent"});
+
+	 ...330p.드래그되는 것은 위치 이동을 의미하고, 웹에서 위치 이동은
+	         position 을 적용해야하고, draggable() 가 적용된 후에는
+					 드래그되는 해당 요소에는 style="position: relative" 가
+					 스타일 적용이 됨.*/
+
+$(".draggable").draggable({
+	cursor:'move', /* ...329p.드래그하는 동안 마우스 포인터 이미지.*/
+	/* ...329p.stack : 드래그 대상이 되는 요소들 끼리 자동으로 깊이 설정을 해줌.
+	                   드래그 되는 요소가 항상 제일 위에 올라옴.*/
+	stack:".draggable",
+	opacity:0.7
+});
+
+/* ...325p.drag 관련 이벤트.
+          dragcreate : 요소에 draggable() 함수를 사용하여 생성할 때 발생하는 이벤트.
+					              $(".selector").bind("dragcreate",
+												                     function(event, ui){...});
+					dragcreate : 드래그가 시작할 때 발생하는 이벤트.
+												 $(".selector").bind("dragstart",
+																							function(event, ui){...});
+					dragstop : 드래그가 멈출 때 발생하는 이벤트.
+												$(".selector").bind("dragstop",
+																						 function(event, ui){...});
+					drag : 드래그되는 동안 마우스가 움직일 때마다 발생하는 이벤트.
+ 												$(".selector").bind("drag",
+ 																						 function(event, ui){...});*/
+$( ".draggable" ).bind( "dragstart", function(event, ui) {
+	$(this).addClass("invert");
+});
+$( ".draggable" ).bind( "dragstop", function(event, ui) {
+	$(this).removeClass("invert")
+});
+</script>
+</body>
+</html>

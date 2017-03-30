@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>슬라이더바를 사용한 컨텐츠 보기</title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="jquery-ui.min.js"></script>
+<style>
+* {margin:0px; padding:0px;}
+
+#wrap {
+	width:600px;
+	overflow:hidden;
+	background:#CF0;
+}
+#content {height:300px;}
+
+#scrollBar {
+	width:600px;
+	height:30px;
+	background:#06C;
+}
+#bar{
+	width:30px;
+	height:30px;
+	background:#FF0;
+}
+
+#content {	position:relative;	};
+
+</style>
+</head>
+
+<body>
+<div id = "wrap">
+  <div id="content"> <img src="pg.jpg" /> </div>
+
+  <div id ="scrollBar">
+    <div id="bar"></div>
+  </div>
+
+</div>
+
+<script>
+/* ...334p.draggable UI 는 드래그 범위를 지정하기 위해 containment 옵션을 제공함.
+           containment 에 parent 를 전달하면 부모 요소의 범위가 스크롤을 이동할 수
+					 있는 이동 범위로 한정됨.*/
+$('#bar').draggable({ axis: 'x' , containment: 'parent'});
+
+/* ...325p.drag 관련 이벤트.
+          dragcreate : 요소에 draggable() 함수를 사용하여 생성할 때 발생하는 이벤트.
+					              $(".selector").bind("dragcreate",
+												                     function(event, ui){...});
+					dragcreate : 드래그가 시작할 때 발생하는 이벤트.
+												 $(".selector").bind("dragstart",
+																							function(event, ui){...});
+					dragstop : 드래그가 멈출 때 발생하는 이벤트.
+												$(".selector").bind("dragstop",
+																						 function(event, ui){...});
+					drag : 드래그되는 동안 마우스가 움직일 때마다 발생하는 이벤트.
+ 												$(".selector").bind("drag",
+ 																						 function(event, ui){...});*/
+
+/* ...333p.drag 이벤트를 사용하지 않으면 dragstart, dragstop 이벤트와
+           setInterval() 를 사용해서 직접 함수를 작성해야 함.
+					 $( ".draggable" ).bind( "dragstart", function(event, ui) {
+					 	$(this).addClass("invert");
+					 });
+					 $( ".draggable" ).bind( "dragstop", function(event, ui) {
+					 	$(this).removeClass("invert")
+					 });
+*/
+$( "#bar" ).bind( "drag", function(event, ui) {
+	getPos()
+});
+
+
+var min = 0
+var max = -400;
+
+function getPos(){
+	/* ...332p.jQuery 의 css() 함수를 사용해서 받은 값에는 단위(px)가 붙어있음.
+	           var barRight = $(SELECTOR).css("right");
+						 barRight 의 문자열을 숫자로 변환해주는 함수 parseInt(), parseFloat()
+						 를 사용하면 숫자로 변환할 수 있는 부분까지 모두 숫자로 변환해줌.
+						 Number() 함수는 이럴 경우 NaN 이라는 결과를 돌려줘서 사용할 수 없음.
+						 offset() 함수는 left, top 요소의 위치를 순수하게 숫자로 얻어낼 수 있음.
+	*/
+	var barLeft = $("#bar").css("left");
+	console.log("barLeft : " + barLeft);
+
+	barLeft = parseInt(barLeft);
+	console.log("barLeft2 : " + barLeft);
+
+	var pos = (barLeft * (max - min))/570 + min;
+	$("#content").css("left", pos);
+}
+
+
+
+</script>
+</body>
+</html>
