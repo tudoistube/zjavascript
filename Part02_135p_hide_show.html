@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> hide()/show()  </title>
+<!-- jQuery library -->
+<script src="jquery-1.7.2.min.js"></script>
+<style>
+
+</style>
+</head>
+<body>
+
+
+<img src="pic1.jpg" alt="" width="300" height="307"/><br/>
+<button id ="hide">hide()</button>
+<button id ="show">show()</button>
+
+<!---------- jQuery code Start ---------->
+<script>
+/*...138p.
+     $(SELECTOR).css("display", "none");
+        style="display:none" 과 같이 inline style 형식으로 처리되어
+        요소가 사라짐.
+     $(SELECTOR).hide();
+        display 속성값을 jQuery 데이터 캐시에 저장해두므로
+        slow() 또는 toggle() 에 의해 복원될 때 display 설정을
+        초기값으로 전환함.
+*/
+$('#show').click(function() {
+  $('img').show(1000, function() {
+    alert('지금 상태는'+$(this).css("display")+"입니다.");
+  });
+});
+
+$('#hide').click(function() {
+  $('img').hide(1000, function() {
+    alert('지금 상태는'+$(this).css("display")+"입니다.");
+  });
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title> 썸네일 포토 갤러리 (Effect) </title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<style type="text/css">
+
+
+body {
+	margin: 20px auto;
+	padding: 0;
+	width: 620px;
+	background:#192839;
+}
+.thumbs {
+   width:100px;
+   float:left;
+}
+.thumbs img {
+	border: solid 1px #ccc;
+	padding:5px;
+	margin-bottom:3px;
+}
+.thumbs img:hover {
+	border-color: #EF4018;
+}
+
+#largeImg {
+	border: solid 1px #ccc;
+	width: 500px;
+	height: 280px;
+	padding: 5px;
+  margin-left:110px;
+}
+
+#caption {
+	/* ...193p.background 이미지의 불투명도가 60% 정도되는
+	          높이 1px 크기의 이미지를 설정함. */
+	background:url(imagesPart03/captionBg.png) repeat-y;
+	/* ...193p.외곽선과 내부여백. */
+  border:#CCC 1px thin;
+	padding:10px;
+	/* ...193p.★.position : relative 이면, 원래 놓여야 할 곳에 놓임.
+	           이때 top 의 위치를 사용하면 위로 이동할 수 있음. */
+	position:relative;
+	color:#FFFFFF;
+}
+
+</style>
+</head>
+
+<body>
+
+    <div class="thumbs">
+        <a href="imagesPart03/pic1.jpg" title="image1"><img src="imagesPart03/th_pic1.jpg" /></a>
+				<em>Lorem Ipsum is simply dummy text of the pdrinting and typesetting industry.</em>
+
+        <a href="imagesPart03/pic2.jpg" title="image2"><img src="imagesPart03/th_pic2.jpg" /></a>
+				<em> Lorem Ipsum is simply dummy tely dummy thely dummy tegxt of thely try.
+				   Sed facilisis, sem a luctus bibendum, dui risus pellentesque velit, quis tempor magna
+				  sem vel justo. Etiam eget ipsum ante. </em>
+
+        <a href="imagesPart03/pic3.jpg" title="image3"><img src="imagesPart03/th_pic3.jpg" /></a>
+				<em> Lorem Ipsum is simply dummy.</em>
+    </div>
+    <div id="largeImg">
+			<img src="imagesPart03/pic1.jpg" alt="image1" />
+			<div id ='caption'></div>
+		</div>
+
+<!---------- jQuery code Start ---------->
+<script>
+	$(".thumbs em").hide();
+
+	$(".thumbs a").click(function(){
+
+		$("#caption").remove();
+
+		var path = $(this).attr("href");
+		$("#largeImg > img").attr({ src: path });
+
+		/* ...194p.a 태그 다음 형제 중 em 태그만 찾음.*/
+		var msg = $(this).next("em").text();
+		console.log("msg : " + msg);
+
+		/* ...194p.자막용 div 태그를 추가함.*/
+		$("#largeImg").append("<div id ='caption'></div>");
+
+		$("#largeImg #caption").text(msg);
+
+
+
+		/* ...194p.div#caption 의 height() 값은 순수하게 컨텐츠의 높이만 알려주고
+		      패딩 값이 포함되지 않으므로,
+		      largeImg, caption 의 padding 을 모두 합친 값이 25px 이 됨.
+		*/
+		var posy = $("#largeImg #caption").height()+25;
+		console.log("posy : " + posy);
+
+		/* ...195p.div#caption 을 부드럽게 올리기 위해 animate() 를 사용하여 top 위치를
+		      현재 위치에서부터 posy 값만큼 위로 부드럽게 올림.
+					큰사진이 나타난 후 곧바로 자막이 올라옴.
+		*/
+		$("#largeImg #caption").animate({top:"-="+posy+"px"},300)
+		/* ...191p.$(SELECTOR).css("height") : 300px, 단위가 붙음.
+		           $(SELECTOR).height() : 300, 단위가 없음.
+							 console.log("height1 : " + $("#largeImg #caption").css("height"));
+							 console.log("height2 : " + ($("#largeImg #caption").height()+25));
+		*/
+
+
+		/* ...184p.effecr 추가
+		      css("opacity", "0") : 완전 투명해져서 사라진 것 처럼 보임.
+					(단, 완전히 사라지는 것은 display:none 상태임).
+					stop() : opacity 변경 애니메이션이 먼저 진행 중일 경우, 애니메이션이 모두
+					         끝나지 않아도 정지시키고 새로운 애니메이션을 작동시킴.
+					그런 다음 animate 를 사용해서 opacity 를 0 에서 1 로 1초 동안 변경시켜줌.
+		*/
+		$("#largeImg > img").css("opacity","0").stop().animate({opacity:1},1000);
+
+		//console.log( path );
+		return false;
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title> png 애니메이션 </title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+
+<style>
+div#ani {
+	width:320px;
+	height:240px;
+	/* ...273p.div 안에 담길 자식 요소인 img 태그를 position:absolute 로 설정해야
+	          하므로, img 요소들의 위치 기준을 잡기 위해 div 요소를 position:absolute
+						로 설정함.*/
+	position:relative;
+	background:url(img/bg.jpg);
+}
+/* ...271p.div 안의 모든 img 태그를 position:absolute 로 설정하면, 모든 이미지가
+           div 요소의 왼쪽 위에 모이게 되고, z-index 는 auto 로 자동 설정되고,
+					 맨 마지막 img 태그가 나타나는 depth 관계를 형성함.
+					 img 태그는 jQuery 를 사용해서 동적으로 추가함.*/
+div#ani img{
+	position:absolute;
+	display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div id ="ani"></div>
+
+
+
+<!------------------------ jQuery 코드 ----------------------->
+<script>
+/* ...274p.setInterval() 호출시 setInterval 에서 id 를 주기 위한 변수.
+           setInterval() 함수를 식별함.*/
+var timerInterval;
+var count=0;
+function arrangeImg(){
+	for(var i=0;i<21;i++){
+		$("div#ani").append("<img src ='seq/seq"+i+".png' />");
+	}
+	/* ...275p.CSS 에서 img 의 display 상태를 none 으로 설정했기 때문에, 전체 이미지가
+	           보이지 않음.*/
+	$("div#ani img:first").show();
+}
+
+arrangeImg();
+
+/* ...276p.이벤트 설정.*/
+$("div#ani").hover(
+	function() { //...mouseOver시.
+		if(timerInterval) { clearInterval(timerInterval); }
+			timerInterval = setInterval("nextFrame()",50)
+		},
+	function() { //...mouseOut 시.
+		if(timerInterval) { clearInterval(timerInterval); }
+		timerInterval = setInterval("prevFrame()",50)
+	}
+);
+
+function nextFrame(){
+	count=count+1;
+	if(count>20){
+		count = 20;
+		clearInterval(timerInterval);
+	}
+	$("div#ani img:visible").hide();
+	/* ...277p.'eq'선택자로 count 에 해당하는 이미지만 선택해서 CSS 의 'display'
+	           속성을 'inline'으로 하여 보이게 함.*/
+	$("div#ani img:eq("+count+")").css("display","inline");
+}
+function prevFrame(){
+	count=count-1;/* ...278p.1씩 빼서 역재생 효과를 줌.*/
+	if(count<0){
+		count = 0;
+		clearInterval(timerInterval);
+	}
+	$("div#ani img:visible").hide();
+	$("div#ani img:eq("+count+")").css("display","inline");
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> animate()를 활용한 가로slide  </title>
+<!-- jQuery library -->
+<script src="jquery-1.7.2.min.js"></script>
+<style>
+/*...153p.overflow:hidden 을 설정한 이유는 animate() 가 width 를 조절할 때
+     자동으로 overflow:hidden 으로 처리하므로, width 후에도 overflose:hidden 으로
+     상태를 유지하기 위함.
+*/
+ div{ overflow:hidden; width:300px; display:inline;}
+</style>
+</head>
+<body>
+
+<div>
+	<img src="pic1.jpg" alt="" width="300" height="307"/>
+</div>
+
+
+<button id ="up">slide감추기</button>
+<button id ="down">slide보이기</button>
+
+<!---------- jQuery code Start ---------->
+<script>
+/* ...150p.속성명(property) 표기.
+           property 변수명을 문자열로 쓸 경우와 그렇지 않은 경우.
+           CSS 속성 중 2개 이상의 단어 형식으로 이뤄진 속성(ex. border-width,
+           margin-top, font-size...)들은 문자열 형식으로 작성해야만 동작함.
+           문자열을 쓰지 않고 변수명으로 쓰려면 '-'를 빼고 '-' 뒤에 오는 알파벳을
+           대문자로 사용하는 Camel표기법으로 사용해야 함.
+           .animate({fontSize:"2em"}, 3000);
+           .animate({"font-size":"2em"}, 3000);
+           .animate({marginLeft:100, marginRight:100px}, "fast");
+           .animate({"margin-left":100, "margin-right":100}, "fast");
+   ...150p.CSS 줄임표현.
+          boarder:5px solid red; 표현은 아래 3가지의 속성을 한 번에 사용한 것임.
+          border-width:5px, border-style:solid, border-color:red;
+          단, animate() 함수의 속성에는 이러한 축약형을 사용할 수 없고 각각의 속성을
+          사용해야 함.
+          $("div").animate(
+            {
+              borderWidth:"5px",
+              borderStyle:"solid",
+              borderColor:"blue"
+            },
+            600);
+
+   ...152p.slideUp, slideDown 은 효과가 끝나면 display 상태를 none || block 으로
+     변경해주는데, animate() 는 display 상태를 변경하지 않음.
+*/
+$('#up').click(function() {
+  $('div').animate({width:"0px"},1000);
+});
+
+$('#down').click(function() {
+  $('div').animate({width:"300px"},1000);
+});
+
+
+
+</script>
+
+</body>
+</html>

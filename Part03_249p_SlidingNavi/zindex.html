@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title> 슬라이딩 내비게이션(바네이 메뉴) </title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<!-- ...258p.이미지 슬라이딩에 easing 효과 추가.-->
+<script type="text/javascript" src="jquery-ui.min.js"></script>
+<style>
+
+
+body {
+	margin: 20px auto; /* 가운데정렬.*/
+	padding: 0;
+	width: 600px;
+	font-size:13px;
+	font-family:Arial, Helvetica, sans-serif;
+	background:#05184D;
+}
+/* ...251p.div#slider 의 가로 크기를 고정한 후, overflow:hidden 으로 하면
+           div#slider 를 벗어나는 이미지들은 보이지 않음.
+*/
+div#slider {
+	margin:0 auto;
+	background:#FFF;
+	width:600px;
+	border:#FDF6DD 2px solid;
+	margin-top:100px;
+	/* ...254p.overflow:hidden - div#slider 요소의 크기를 벗어난 부분은 보이지 않음.
+	           position:relative - 'ul' 버튼 태그의 위치를 잡는 기준으로 삼음.*/
+	overflow:hidden;
+	position:relative;
+}
+/* ...255p.div#view 가 슬라이딩되는 부분임.
+           position:relative 로 하는 이유는 div#viewr 요소 내부의 이미지들이
+					 position 값을 absolute 로 설정하여 각각의 이미지들을 특정 위치로 이동
+					시키기 때문임.
+					부모인 div#viewer 요소가 위치의 기준을 잡기 위해 position:relative; 값을
+					사용함.*/
+div#viewer {
+	height:350px;
+	position:relative;
+}
+/* ...255p.이미지 요소에 position:absolute; 를 설정해서 위치 이동을 할 준비를 함.*/
+img{
+	position:absolute;
+}
+
+img#image1{	left:0px;	top:0px;	}
+img#image2{	left:600px;	top:0px;	}
+img#image3{	left:1200px;	top:0px;	}
+img#image4{	left:1800px;	top:0px;	}
+
+
+/*--------   ul li CSS ------------ */
+/* ...255p.position:absolute 로 설정 후 부모요소인 div#slider 의 맨 오른쪽
+           아래에 배치함.*/
+#btnGroup {
+	position:absolute;
+	bottom:2%;
+	right:0;
+	margin:0;
+	padding:0;
+}
+
+/* ...256p.float:left 를 사용해서 항목드을 가로로 나열함. */
+#btnGroup li {
+	float:left;
+	width:16px;
+	height:16px;
+	list-style:none;
+	margin-right:6px;
+	background-color:#60F;
+	cursor:pointer;
+}
+
+/* ...display:block 으로 하여 가로, 세로 높이를 li 에 채움. */
+ul#btnGroup li a{
+	text-decoration:none;
+	text-align:center;
+	background:#FDF6DD;
+	display:block;
+	width:100%;
+	hiehgt:100%;
+	color:#000;
+}
+
+ul#btnGroup li a:hover{	background:#CCFF00;	}
+
+/* ...260p.클릭한 버튼의 배경색을 설정해놓은 CSS 에 의해 구분함.*/
+ul#btnGroup li a.act{background:lime;}
+</style>
+
+</head>
+
+
+<body>
+
+<div id="slider">
+
+    <div id="viewer">
+        <img id="image1" src="image/slide1.jpg" alt="">
+        <img id="image2" src="image/slide2.jpg" alt="">
+        <img id="image3" src="image/slide3.jpg" alt="">
+        <img id="image4" src="image/slide4.jpg" alt="">
+    </div>
+
+  <ul id="btnGroup">
+        <li id="btn0"><a href="image/slide1.jpg">1</a></li>
+        <li id="btn1"><a href="image/slide2.jpg">2</a></li>
+        <li id="btn2"><a href="image/slide3.jpg">3</a></li>
+        <li id="btn3"><a href="image/slide4.jpg">4</a></li>
+   </ul>
+
+</div>
+
+<!---------- jQuery code Start ---------->
+<script>
+$('ul li a').click(function() {
+	var strName = ( $(this).parent().attr('id') );
+	console.log("strName : " + strName);
+	console.log("strName.substr(3,1) : " + strName.substr(3,1));
+	//...버튼의 번호를 전달함.
+	slideTarget( strName.substr(3,1) );
+
+	/* ...260p.클릭한 버튼의 배경색을 설정해놓은 CSS 에 의해 구분함.*/
+	$(this).addClass("act");
+	//console.log("color : " + $(this).css("background-color"));
+
+	return false;
+});
+
+function  slideTarget(n){
+	/*...258p.이미지 1장의 크기가 600px 이고, 마이너스부호(-)가 붙은 이유는
+	          위치를 왼쪽으로 이동해야 하기 때문임.*/
+	var pos = Number( n ) * - 600;
+	/*$('#viewer').animate( {left:pos}, 1500);
+	~before/after~ ...258p.이미지 슬라이딩에 easing 효과 추가.*/
+	$('#viewer').animate( {left:pos}, 1500, "easeInOutQuart");
+	//$('#viewer').animate( {left:pos}, 1500, "easeOutBounce");
+
+}
+
+</script>
+</body>
+</html>

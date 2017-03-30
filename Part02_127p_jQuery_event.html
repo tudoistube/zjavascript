@@ -10,7 +10,7 @@
   div{
   	width:100px;
   	height:100px;
-	background-color:#FC9;
+	  background-color:#FC9;
   }
 </style>
 
@@ -34,10 +34,33 @@
              $('#obj').bind('click', fn);
              $('#obj').bind('mouseenter mouseleave', fn);
    ...이벤트 제거.
-      1. #('#obj').unbind('특정이벤트명'); id 가 'obj' 인 객체의 특정이벤트를 제거함.
+      1. #('#obj').unbind('EVENT_NAME'); id 가 'obj' 인 객체의 특정이벤트를 제거함.
       2. #('#obj').unbind(); id 가 'obj' 인 객체의 모든 이벤트를 제거함.
 */
    $('div').click(sum);
+
+/*...128p.마우스 이벤트.
+     click, dblclick, hover, mousedown, mouseenter, mouseleave, mousemove
+     mouseout, mouseover, mouseup, toggle.
+
+  ...128p.hover 이벤트.
+     $('SELECTOR').hover(MOUSEENTER_EVENT_FUNC, MOUSELEAVE_EVENT_FUNC);
+
+  ...129p.문서 로딩 이벤트.
+     ready, unload.
+
+  ...129p.폼 이벤트.
+     blur : 노드에서 포커스가 떠날 때 발생함.
+     change, focus,
+     select : 사용자가 텍스트를 선택했을 때 발생함.
+     submit.
+
+  ...129p.키보드 이벤트.
+     keydown, keypress, keyup.
+
+  ...129p. 웹브라우저 이벤트.
+     resize, scroll.
+*/
 
 
 

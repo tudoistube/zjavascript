@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title> 썸네일 포토 갤러리 </title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<style type="text/css">
+
+
+body {
+	margin:20px auto;
+	padding:0;
+	width:620px;
+	background:#192839;
+}
+.thumbs {
+   width:100px;
+   float:left;
+}
+.thumbs img {
+	border:solid 1px #ccc;
+	padding:5px;
+	margin-bottom:3px;
+}
+.thumbs img:hover {
+	border-color: #EF4018;
+}
+
+#largeImg {
+	border:solid 1px #ccc;
+	/* ...183p.width 를 500px 로 제한하면, 위쪽의 'thumbs' 영역이 float:left 이므로
+	      오른쪽 공간으로 올라와서 배치됨. */
+	width:500px;
+	height:280px;
+	padding:5px;
+  margin-left:110px;
+	/* outline: 1px solid #f00; */
+}
+</style>
+</head>
+
+<body>
+
+    <div class="thumbs">
+        <a href="imagesPart03/pic1.jpg" title="image1"><img src="imagesPart03/th_pic1.jpg" /></a>
+        <a href="imagesPart03/pic2.jpg" title="image2"><img src="imagesPart03/th_pic2.jpg" /></a>
+        <a href="imagesPart03/pic3.jpg" title="image3"><img src="imagesPart03/th_pic3.jpg" /></a>
+    </div>
+    <div id="largeImg"><img src="imagesPart03/pic1.jpg" alt="image1" /></div>
+
+<!---------- jQuery code Start ---------->
+<script>
+
+$(".thumbs a").click(function(){
+	var path = $(this).attr("href");
+	$("#largeImg > img").attr({ src: path });
+	console.log( "path = " + path );
+	return false;
+});
+
+</script>
+</body>
+</html>

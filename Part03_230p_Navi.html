@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title> Tree 형 내비게이션 </title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<style type="text/css">
+/* ...233p.가운데 정렬. */
+body {
+	margin:20px auto;
+	padding:0;
+	width:200px;
+	font-size:13px;
+	font-family:Arial, Helvetica, sans-serif;
+}
+/* ...233p.각각의 메뉴 항목 중 메인 메뉴가운데 정렬. */
+ul#navi {
+	width:200px;
+	text-indent:10px;
+}
+/* ...234p.모든 'ul'태그의 리스트 스타일을 없애고, 마진과 패딩을 0으로 함. */
+ul#navi, ul#navi ul {
+	list-style:none;
+	margin:0px;
+	padding:0px;
+}
+li.group {
+	margin-bottom:3px;
+}
+/* ...234p.각 메뉴의 제목이 되는 'div'태그의 설정 :
+           높이, 라인간격, 배경색. 마우스 포인터 설정함.*/
+div.title {
+	height:35px;
+	line-height:3;
+	background:#9AB92E;
+	cursor:pointer;
+}
+
+/* ...235p.각각의 메뉴 항목 중 서브 메뉴 스타일 설정. */
+ul.sub li{
+	height:35px;
+	margin-bottom:2px;
+	line-height:3; /* 현재글씨의 3배 정도 간격. */
+	background:#FDF6DD;
+	cursor:pointer;
+}
+
+ul.sub li a{
+	text-decoration:none; /* a 태그 밑줄 없앰. */
+	/* 가로, 세로 영역을 li 와 일치하도록 채움. */
+	display:block;
+	width:100%;
+	hiehgt:100%;
+	color:#000;
+}
+
+ul.sub li:hover{	background:#CCFF00;	}
+</style>
+</head>
+
+<body>
+
+
+<ul id="navi">
+     <li class="group">
+         <div class="title"> Title 1 </div>
+         <ul class="sub">
+           <li><a href="#"> sub1 </a></li>
+           <li><a href="#"> sub1 </a></li>
+           <li><a href="#"> sub1 </a></li>
+         </ul>
+     </li>
+     <li class="group">
+         <div class="title"> Title 2 </div>
+         <ul class="sub">
+           <li><a href="#"> sub1 </a></li>
+         </ul>
+     </li>
+     <li class="group">
+         <div class="title"> Title 3 </div>
+         <ul class="sub">
+           <li><a href="#"> sub1 </a></li>
+           <li><a href="#"> sub1 </a></li>
+         </ul>
+     </li>
+</ul>
+
+
+<!---------- jQuery code Start ---------->
+<script>
+	$(".sub").hide();
+
+	/* ...방법1.
+	$("div.title").click(function(e){
+		$(".sub").hide();
+		$(this).next().show();
+	});*/
+
+	/* ...방법2. */
+	$("div.title").click(function(e){
+		/* ...238p. 현재 서브 메뉴가 펼쳐진 상태에서 다시 slideUp() 이
+		            실행되지 않도록 함.*/
+		if($(this).next().css("display")=="none")
+		{
+			$(".sub").slideUp(1000);
+		}
+		$(this).next().slideDown("fast"); // ...fast : 0.2sec.
+	});
+</script>
+</body>
+</html>

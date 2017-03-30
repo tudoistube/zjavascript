@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title> 직접 만들어 보는 이미지 hover 효과 </title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="jquery-ui.min.js"></script>
+
+<style>
+body {
+	margin:20px auto;
+	padding:0;
+	width:600px;
+	background:#192839;
+}
+
+div {
+	background-image:url(img/pic_bg.jpg);
+	width:600px;
+	height:379px;
+	border:5px #EF4018 solid;
+	overflow:hidden; /* ...294p.벗어난 영역은 보이지 않음.*/
+}
+
+div img{
+	display:none;
+	/* ...297p.마우스 오버시 left, top 속성을 사용하여 현재 위치에서
+	           이동하게 함.*/
+	position:relative;
+}
+
+
+</style>
+</head>
+
+<body>
+<!-- ...294p.처음에는 img 태그의 display:none 으로 보이지 않도록 함.
+            div 에 마우스 오버가 되면 img 요소의 크기와 opacity 0에서 1로 변경하며
+						배경이미지는 보이지 않고, img 요소가 애니메이션하면서 처음 사진보다 크게
+						했다가 점점 작아지게 하며 동적으로	나타냄.
+						마우스가 아웃되면 opacity 를 1에서 0으로 fadeOut() 애니메이션 하면서
+						원래 상태인 배경이미지만 보임. -->
+<div><img src="img/pic.jpg" /></div>
+
+
+<!------------------------ jQuery 코드 ----------------------->
+<script>
+
+$("div").hover(
+	function() {
+		/* ...298p.마우스오버시 div 태그 안의 img 태그를 찾고
+		         현재 위치에서(position:relative) 왼쪽으로 50px, 위로 50px 이동함.
+						 가로 크기는 700px, opacity:0 으로 보이지 않게 하고,
+						 animate()는 display 상태를 자동으로 none 에서 block 또는 inline
+						 으로 변경할 수 없기 때문에, 처음 img 는 display:none 으로 되어 있어서
+						 display 상태를 inline 으로 변경함.*/
+		$(this).find("img")
+					 .css({left:"-50px",
+								 top:"-50px",
+								 width:"700px",
+								 opacity:0,
+								 display:"inline"})
+					 .stop() /* ...299p.기존 애니메이션 중지하고 새로운 애니메이션 준비.*/
+					 /* ...299p.animate()로 0.5초 동안 원상태로 돌림.*/
+					 .animate({left:"0px",
+									  top:"0px",
+									  opacity:1,
+									  width:"600px"},
+									  500)
+
+	},
+	/* ...299p.마우스 아웃시 함수.
+	          현재 작동 중인 애니메이션을 중지하고, fadeOut() 은 선택된 요소의
+						opacity 를 1에서 0으로 변경한 후 자동으로 display:none 으로 변경함.*/
+	function() {
+		$(this).find("img")
+			   .stop()
+			   .fadeOut();
+ 	}
+
+);
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title> 이미지 이동을 사용한 pan 효과 </title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+
+<style>
+body {
+	margin:20px auto;
+	padding:0;
+	width:800px;
+	background:#192839;
+}
+div{
+	padding:0px;
+	overflow:hidden; /* ...283p.div 를 벗어나면 보이지 않음.*/
+	width:800px;
+	height:300px;
+	border:#999 thin solid;}
+
+/* ...283p.div 안에 있는 img 가 left, top 등을 사용해 현재 위치에서 이동해야
+          하므로 position:relative 로 설정함.*/
+img{	position:relative;	}
+</style>
+</head>
+
+<body>
+
+<div id="background">
+	<img src="img/bg.jpg" />
+</div>
+
+<!---------- jQuery code Start ---------->
+<script>
+/* ...284p.이미지가 모두 로딩되면 이미지의 가로, 세로 크기를 변수에 담음.
+           이미지이동(start)시, 'div' 요소의 여백이 보이지 않게 하기 위하여
+					 이미지의 위치는 left 가 0 보다 크면 안되고, top 도 0 보다 크면 안됨.*/
+var imgw, imgh;
+$('img').load(function() {
+	imgw = $(this).width();
+	imgh = $(this).height();
+});
+
+/* ...285p.이미지가 이동할 수 있는 좌표.
+           left = 'div' 의 가로크기 - 이미지의 가로 크기.
+					 top = 'div' 의 세로크기 - 이미지의 세로 크기.
+					 Math.ceil() : 정수처리.*/
+function start() {
+	var posx =Math.ceil( Math.random()* (800-imgw) );
+	var posy =Math.ceil( Math.random()* (300-imgh) );
+	/* ...285p.2000 ~ 7000 사이의 정수.
+	          이미지 움직임이 끝난 후 다시 움직일 때 까지의 간격으로 사용함.*/
+	var delayTime =Math.ceil(Math.random()*5000+2000);
+	/* ...285p.delayTime 의 시간만큼 지연했다가 5초동안 이미지를 이동시킴.*/
+	$("div#background img").delay(delayTime).animate({left:posx, top:posy}, 5000, replay);
+}
+
+function replay(){
+	var posx =Math.ceil( Math.random()* (800-imgw) );
+	var posy =Math.ceil( Math.random()* (300-imgh) );
+	var delayTime =Math.ceil(Math.random()*5000+2000);
+	/* ...286p.$(this) 는 이 함수를 호출한 객체,
+	           $("div#background img")를 의미함. */
+	$(this).delay(delayTime).animate({left:posx, top:posy}, 5000, replay);
+}
+
+start();
+
+
+</script>
+</body>
+</html>

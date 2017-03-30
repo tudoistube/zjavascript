@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title> 썸네일 포토 갤러리 (Effect) </title>
+<script type="text/javascript" src="jquery-1.7.2.min.js"></script>
+<style type="text/css">
+
+
+body {
+	margin: 20px auto;
+	padding: 0;
+	width: 620px;
+	background:#192839;
+}
+.thumbs {
+   width:100px;
+   float:left;
+}
+.thumbs img {
+	border: solid 1px #ccc;
+	padding:5px;
+	margin-bottom:3px;
+}
+.thumbs img:hover {
+	border-color: #EF4018;
+}
+
+#largeImg {
+	border: solid 1px #ccc;
+	width: 500px;
+	height: 280px;
+	padding: 5px;
+    margin-left:110px;
+}
+</style>
+</head>
+
+<body>
+
+    <div class="thumbs">
+        <a href="imagesPart03/pic1.jpg" title="image1"><img src="imagesPart03/th_pic1.jpg" /></a>
+        <a href="imagesPart03/pic2.jpg" title="image2"><img src="imagesPart03/th_pic2.jpg" /></a>
+        <a href="imagesPart03/pic3.jpg" title="image3"><img src="imagesPart03/th_pic3.jpg" /></a>
+    </div>
+    <div id="largeImg"><img src="imagesPart03/pic1.jpg" alt="image1" /></div>
+
+<!---------- jQuery code Start ---------->
+<script>
+
+$(".thumbs a").click(function(){
+	var path = $(this).attr("href");
+	$("#largeImg > img").attr({ src: path });
+	/* ...184p.effecr 추가
+	      css("opacity", "0") : 완전 투명해져서 사라진 것 처럼 보임.
+				(단, 완전히 사라지는 것은 display:none 상태임).
+				stop() : opacity 변경 애니메이션이 먼저 진행 중일 경우, 애니메이션이 모두
+				         끝나지 않아도 정지시키고 새로운 애니메이션을 작동시킴.
+				그런 다음 animate 를 사용해서 opacity 를 0 에서 1 로 1초 동안 변경시켜줌.
+	*/
+	$("#largeImg > img").css("opacity","0").stop().animate({opacity:1},1000);
+
+	//console.log( path );
+	return false;
+});
+
+</script>
+
+</body>
+</html>
