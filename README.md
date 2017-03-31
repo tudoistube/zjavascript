@@ -1,7 +1,7 @@
 # ZJavascript
-##Javascript study practice ('모던 웹을 위한 JavaScript + jQuery 입문' 책보고 실습한 소스)  
+## jQuery and jQueryUI ('jQuery 입문' 책보고 실습한 소스)  
 
-###Practised sources from a book ['모던 웹을 위한 JavaScript + jQuery 입문 : 자바스크립트에서 제이쿼리, 제이쿼리 모바일까지 한 권으로 끝낸다'](http://www.yes24.com/24/Goods/10847178?Acode=101 "a good basic book on javascript and jQuery" )  
+### Practised sources from a book ['jQuery 입문'](http://www.yes24.com/24/goods/7865910?scode=032&OzSrank=5 "a good basic book on jQuery" )  
 
     
 책 보면서 실습한 소스임.  
