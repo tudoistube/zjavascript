@@ -7,6 +7,8 @@ ZJavascript
 
 ### zjquery ['jQuery 입문'](http://www.yes24.com/24/goods/7865910?scode=032&OzSrank=5 "a good basic book on jQuery" )  
 
+### zopentutorials ['생활코딩 :: 웹애플리케이션 만들기' 강좌 보고 실습한 소스](https://opentutorials.org/course/1688 "a good basic lecture on javascript and CSS" )  
+
     
 책 보면서 실습한 소스임.  
 공부하면서 올리는 것이어서 틀린 부분이 있을수도 있음(알려주시면 반영하겠음)  
