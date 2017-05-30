@@ -1,0 +1,19 @@
+  body.zgreen{
+    background-color: green;
+    color: lime;
+  }
+  body.zcyan{
+    background-color: blue;
+    color: cyan;
+  }
+
+.container {
+  padding-top: 20px;
+}
+#zlogo {
+  width: 150px;
+}
+#zcontrol {
+  float: right;
+  margin-bottom: 30px;
+}

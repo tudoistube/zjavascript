@@ -1,0 +1,42 @@
+  body.zgreen{
+    background-color: green;
+    color: lime;
+  }
+  body.zcyan{
+    background-color: blue;
+    color: cyan;
+  }
+
+
+
+  header {
+    border-bottom: 1px solid yellowgreen;
+    padding: 20px;
+  }
+  nav {
+    border-right: 1px solid yellowgreen;
+    width: 200px;
+    float:left;
+    height: 600px;
+    /*
+    margin-right: 15px;
+    */
+  }
+  nav ol {
+    list-style: none;
+  }
+  article {
+    float: left;
+    padding: 20px;
+  }
+
+  #zcontrol {
+    float: right;
+  }
+
+  header img {
+    float: left;
+    height: 80px;
+    padding-right: 20px;
+    margin-top: 2px;
+  }
