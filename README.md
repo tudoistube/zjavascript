@@ -3,7 +3,7 @@
 
  ![Learning Vue.js 2](http://image.yes24.com/momo/TopCate1229/MidCate009/122885162.jpg)
 
-### Practised sources from a book ['처음 만나는 자바스크립트'](http://www.acornpub.co.kr/book/learn-vuejs2 "Learning Vue.js 2 by " )  
+### Practised sources from a book ['Vue.js 2 시작하기 가볍고 빠른 웹 개발을 위한 Vue.js'](http://www.acornpub.co.kr/book/learn-vuejs2 "Learning Vue.js 2 by Olga Filipova" )  
 
     
 책 보면서 실습한 소스임.  
