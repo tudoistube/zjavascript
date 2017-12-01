@@ -9,7 +9,7 @@ ZJavascript
 
 ### zopentutorials ['생활코딩 :: 웹애플리케이션 만들기' 강좌 보고 실습한 소스](https://opentutorials.org/course/1688 "a good basic lecture on javascript and CSS" )  
 
-### Practised sources from a book ['처음 만나는 자바스크립트'](http://www.acornpub.co.kr/book/learn-vuejs2 "Learning Vue.js 2 by Olga Filipova" )  
+### zvuejs2Start ['처음 만나는 자바스크립트'](http://www.acornpub.co.kr/book/learn-vuejs2 "Learning Vue.js 2 by Olga Filipova" )  
 
     
 책 보면서 실습한 소스임.  
