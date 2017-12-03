@@ -33,13 +33,17 @@
 <div id="app" class="container">
   <h2>{{ title }}</h2>
   <div class="input-group">
+<!-- ...48p. v-on:keyup.enter = @keyup.enter -->
     <input v-model="newItem"
            @keyup.enter="addItem"
            placeholder="add shopping list item"
            type="text"
            class="form-control">
     <span class="input-group-btn">
-      <button @click="addItem" class="btn btn-default" type="button">Add!</button>
+      <button type="button"
+              @click="addItem" class="btn btn-default" >
+              Add!
+      </button>
     </span>
   </div>
   <ul>
