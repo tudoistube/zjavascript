@@ -11,6 +11,8 @@ ZJavascript
 
 ### zvuejs2Start ['Vue.js 2 시작하기' 책 보고 실습한 소스](http://www.acornpub.co.kr/book/learn-vuejs2 "Learning Vue.js 2 by Olga Filipova" )  
 
+### zvuejs2EasyQuick ['쉽고 빠르게 배우는 Vue.js 2 프로그래밍' 책 보고 실습한 소스](http://www.yes24.com/24/goods/44271600?scode=032&OzSrank=1 "쉽고 빠르게 배우는 Vue.js 2 프로그래밍" )  
+
     
 책 보면서 실습한 소스임.  
 공부하면서 올리는 것이어서 틀린 부분이 있을수도 있음(알려주시면 반영하겠음)  
