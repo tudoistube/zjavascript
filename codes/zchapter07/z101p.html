@@ -1,0 +1,88 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Reusability of Vue</title>
+</head>
+<body>
+    <h1>Vue 의 재사용성.</h1>
+    <h2>Vue 컴포넌트의 프로퍼티 이름 변경을 여러군데를 직접 바꿀것인가?</h2>
+    <div class="container">
+      <div>
+          <h3>Alex's stories</h3>
+          <ul class="list-group">
+            <li v-for="story in storiesBy('Alex')">
+              {{story.writer}} said "{{story.zbody}}"
+            </li>
+          </ul>
+          <h3>John's stories</h3>
+          <ul class="list-group">
+            <li v-for="story in storiesBy('John')">
+              {{story.writer}} said "{{story.zbody}}"
+            </li>
+          </ul>
+          <div class="form-group">
+            <label for="query">What are you looking for?</label>
+            <input v-model="query" class="form-control">
+          </div>
+          <h3>Search results:</h3>
+          <ul class="list-group">
+            <li v-for="story in search">
+              {{story.writer}} said "{{story.zbody}}"
+            </li>
+          </ul>
+      </div>
+    </div>
+</body>
+
+<template id="story-template">
+    <h1>{{ story.writer }} said "{{ story.zbody }}"</h1>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+Vue.component('story', {
+    props: ['zbody'],
+    template: '#story-template'
+});
+
+new Vue({
+    el: '.container',
+    data: {
+      stories: [
+        {
+          zbody: "I crashed my car today!",
+          writer: "Alex"
+        },
+        {
+          zbody: "Yesterday, someone stole my bag!",
+          writer: "John"
+        },
+        {
+          zbody: "Someone ate my chocolate...",
+          writer: "John"
+        },
+        {
+          zbody: "I ate someone's chocolate!",
+          writer: "Alex"
+        },
+      ],
+      query: ' '
+    },
+    methods:{
+      storiesBy: function (writer) {
+        return this.stories.filter(function (story) {
+          return story.writer === writer
+        })
+      }
+    },
+    computed: {
+      search: function () {
+        var query = this.query
+        return this.stories.filter(function (story) {
+          return story.zbody.includes(query)
+        })
+      }
+    }
+})
+</script>
+</html>

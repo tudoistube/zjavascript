@@ -1,0 +1,30 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Hi Vue</title>
+</head>
+<body>
+    <h1>Template 으로 각각 다른 이야기를 표시하는 예제.</h1>
+    <div class="container">
+        <story plot="Vue Component 의 props 에 속성값을 넣음."></story>
+        <story plot="HTML 에서는 낙타표기법으로 표기함."></story>
+        <story plot="Javascript 에서는 케밥표기법으로 표기함."></story>
+    </div>
+</body>
+
+<template id="story-template">
+    <h1>{{ plot }}</h1>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+Vue.component('story', {
+    props: ['plot'],
+    template: '#story-template'
+});
+
+new Vue({
+    el: '.container'
+})
+</script>
+</html>

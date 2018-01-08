@@ -1,0 +1,64 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Hi Vue and Filter</title>
+</head>
+<body>
+    <div class="container">
+        <h1>계산된 프로퍼티(famous)로 배열을 필터링하는 예제.</h1>
+        <h2>투표수 25 보다 많이 받은 인기있는 이야기를 필터링하는 예제.</h2>
+        <h2>HTML 코드에서는 stories 배열 대신 계산된 프로퍼티인 famous 를 렌더링함.</h2>
+        <div>
+            <h3>Let's hear some famous stories! ({{famous.length}})</h3>
+            <ul class="list-group">
+              <li v-for="story in famous"
+                  class="list-group-item">
+                  {{ story.writer }} said "{{ story.plot }}"
+                  and upvoted {{ story.upvotes }} times.
+              </li>
+            </ul>
+        </div>
+        <pre>
+            {{ $data }}
+        </pre>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '.container',
+        data: {
+          stories: [
+              {
+                  plot: "I crashed my car today!",
+                  writer: "Alex",
+                  upvotes: 28
+              },
+              {
+                  plot: "Yesterday, someone stole my bag!",
+                  writer: "John",
+                  upvotes: 8
+              },
+              {
+                  plot: "Someone ate my chocolate...",
+                  writer: "John",
+                  upvotes: 51
+              },
+              {
+                  plot: "I ate someone's chocolate!",
+                  writer: "Alex",
+                  upvotes: 28
+              },
+          ]
+        },
+        computed:
+        {
+          famous: function () {
+            return this.stories.filter(function (story) {
+              return story.upvotes > 25;
+            })
+          },
+        }
+    })
+</script>
+</html>

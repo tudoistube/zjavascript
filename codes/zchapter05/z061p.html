@@ -1,0 +1,35 @@
+<html>
+<head>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+<title>Upvote</title>
+<style>
+    .container {
+        padding-top: 75px;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn btn-primary btn-lg btn-block"
+                v-on:click="methodUpvote">
+            메서드를 이용하여 값을 증가시킴! {{varUpvotes}}
+        </button>
+    </div>
+</body>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js"></script>
+<script type="text/javascript">
+new Vue({
+    el: '.container',
+    data: {
+        varUpvotes: 0
+    },
+    // define methods under the **`methods`** object
+    methods: {
+        methodUpvote: function(){
+            // **`this`** inside methods points to the Vue instance
+            this.varUpvotes++;
+        }
+    }
+})
+</script>
+</html>

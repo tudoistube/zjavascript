@@ -1,0 +1,37 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Hi Vue and List Rendering</title>
+</head>
+<body>
+    <div class="container">
+        <h1>객체 프로퍼티 순회 예제.</h1>
+        <div>
+            <ul class="list-group">
+              <!--
+                value, key, index 순서로 뽑아야 하는 것 같음.
+               -->
+                <li v-for="(value, key, index) in story" class="list-group-item">
+                    {{index}}. {{key}} : {{value}}
+                </li>
+            </ul>
+        </div>
+        <pre>
+            {{ $data }}
+        </pre>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+    new Vue({
+        el: '.container',
+        data: {
+          story: {
+              plot: "Someone ate my chocolate...",
+              writer: 'John',
+              upvotes: 47
+          }
+        }
+    })
+</script>
+</html>

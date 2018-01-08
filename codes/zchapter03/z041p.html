@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Hi Vue</title>
+</head>
+<body>
+<div id="app">
+    <h1 v-show="!message">textarea 에 내용이 있으면 사라짐.</h1>
+    <textarea v-model="message"></textarea>
+    <br>
+    <button v-if="message">
+        v-show 를 v-if 로 바꿔도 똑같이 잘 작동함.
+    </button>
+    <!--pre 태그를 사용하면 json 형태로 데이터를 브라우저에 보여줌.-->
+    <pre>{{ $data }}</pre>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+             message: 'Merry Christmas^_____^!!!'
+        }
+    })
+</script>
+</html>

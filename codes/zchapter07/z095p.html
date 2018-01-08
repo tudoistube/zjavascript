@@ -1,0 +1,24 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>Hi Vue</title>
+</head>
+<body>
+    <h1>Vue Component 예제.</h1>
+    <div class="container">
+        <story></story>
+        <story></story>
+        <story></story>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
+<script type="text/javascript">
+Vue.component('story', {
+    template: '<h1>Vue Component is amazing!</h1>'
+});
+
+new Vue({
+    el: '.container'
+})
+</script>
+</html>

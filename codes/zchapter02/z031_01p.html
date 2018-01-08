@@ -1,0 +1,23 @@
+<html>
+<head>
+  <title>Hi Vue</title>
+</head>
+<body>
+  <div id="app">
+    <!--바인딩표현식-->
+    <h1>{{message}}</h1>
+  </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js"></script>
+
+<script>
+/*...031p.data 변수를 Vue 이전에 선언해야 함. */
+var data = {
+  message: 'Merry Christmas, Vue^_____^!!!'
+};
+new Vue({
+  el: '#app', /*...031p.el : 원하는 엘리먼트 가리킴 */
+  data: data
+})
+</script>
+</html>

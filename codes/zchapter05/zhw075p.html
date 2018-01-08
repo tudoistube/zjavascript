@@ -1,0 +1,63 @@
+<html>
+<head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <title>The Elections</title>
+</head>
+<body>
+<div class="container">
+    <h1>시장 선거</h1>
+    <h3>이름과 투표수를 가진 시장후보라는 배열을 만들어요.</h3>
+    <h3>버튼을 클릭하면 각 후보자의 득표수가 올라감.</h3>
+    <h3>가장 득표수가 많은 순으로 나열됨.</h3>
+    <h3>입력 엘리먼트에 포커스가 되고 'delete'키가 눌리면 모든 투표수는 0이 되어요.</h3>
+    <h3>투표 결과는 계산된 프로퍼티를 이용해서 가장 득표수가 많은 시장 후보 이름을 표시함.</h3>
+    <ul class="list-group">
+        <li v-for="candidate in candidates" class="list-group-item">
+            {{candidate.name}} {{candidate.votes}}
+            <!-- increase votes 'on:click'-->
+            <button class="btn btn-default" @click="candidate.votes++">Vote</button>
+        </li>
+    </ul>
+    <!-- listening for keyboard event -->
+    <input @keyup.delete="clear" class="form-control" placeholder="press 'delete' to reset "></input>
+    <!-- display the name of the 'mayor' using a computed property-->
+    <h2>Our mayor is {{mayor.name}} and got {{mayor.votes}}!</h2>
+    <pre>{{ $data }}</pre>
+    <pre>{{ mayor }}</pre>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.1/vue.js"></script>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '.container',
+        data: {
+            candidates: [
+                {name: "Mr. Black", votes: 140},
+                {name: "Mr. White", votes: 135},
+                {name: "Mr. Pink", votes: 145},
+                {name: "Mr. Brown", votes: 130},
+            ]
+        },
+        computed: {
+            mayor: function () {
+                //first we sort the array descending
+                var candidatesSorted = this.candidates.sort(function (a, b) {
+                    return b.votes - a.votes;
+                });
+                //the mayor will be the first item
+                return candidatesSorted[0];
+            }
+        },
+        methods: {
+            //this method runs when the key 'delete' is pressed
+            clear: function () {
+                //Turn votes of all candidate to 0 using map() function.
+                this.candidates = this.candidates.map(function (candidate) {
+                    candidate.votes = 0;
+                    return candidate;
+                })
+            }
+        }
+    })
+</script>
+</html>
