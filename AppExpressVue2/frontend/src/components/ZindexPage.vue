@@ -1,10 +1,10 @@
 <template>
   <div class="movies">
     <h1>영화 목록</h1>
-    <div v-for="movie in movies" class="movie">
+    <div v-for="movie in movies" v-bind:key="movie.id" class="movie">
       <img v-bind:src="movie.poster" class="poster">
       <div>
-        <strong></strong>, <i></i> []
+        <strong>{{movie.name}}</strong>, <i>{{movie.director}}</i> [{{movie.year}}]
         <router-link :to="{ name: 'show', params: { id: movie.id }}">더보기</router-link>
       </div>
     </div>
@@ -19,6 +19,7 @@ export default {
       this.movies = response.data
     })
   },
+  name: 'hello',
   data () {
     return {
       movies: []
@@ -26,3 +27,17 @@ export default {
   }
 }
 </script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+.poster {
+  width: 185px;
+  vertical-align: middle;
+}
+
+.movie {
+  display: inline-block;
+  padding: 10px;
+  text-align: center;
+}
+</style>

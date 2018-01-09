@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import HelloWorld from '@/components/HelloWorld'
 
 Vue.use(Router)
+import Index from '@/components/ZindexPage'
+import Show from '@/components/ZshowPage'
 
-import Index from 'components/IndexPage'
-import Show from 'components/ShowPage'
 export default new Router({
-//  mode: 'history',
+  mode: 'history',
   routes: [
     {
       path: '/',

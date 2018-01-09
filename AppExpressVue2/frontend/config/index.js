@@ -10,7 +10,6 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-
     proxyTable: {
       '/api': {
         target: 'http://localhost:3000/api',
@@ -47,10 +46,11 @@ module.exports = {
 
   build: {
     // Template for index.html
-    index: path.resolve(__dirname, '../dist/index.html'),
+    index: path.resolve(__dirname, '../../backend/public/index.html'),
 
     // Paths
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    //assetsRoot: path.resolve(__dirname, '../dist'),//...before.
+    assetsRoot: path.resolve(__dirname, '../../backend/public'),//...after.
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
 

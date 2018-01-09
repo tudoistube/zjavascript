@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var movies = require('./routes/zmovies');//...01.added.
+var movies = require('./routes/zmovies');//...added.
+var history = require('connect-history-api-fallback');//...added.
 
 var app = express();
 
@@ -25,7 +26,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/api/movies', movies);//...01.added.
+app.use('/api/movies', movies);//...added.
+//app.use(require('connect-history-api-fallback')());
+app.use(history());
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
