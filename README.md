@@ -1,12 +1,5 @@
-# ZJavascript ZVuejs2EasyQuick
-## Javascript ZVuejs2EasyQuick study practice ('쉽고 빠르게 배우는 Vue.js 2 프로그래밍' 책 보고 실습한 소스)  
-
-### zvuejs2EasyQuick ['쉽고 빠르게 배우는 Vue.js 2 프로그래밍' 책 보고 실습한 소스 및 Summary](https://docs.google.com/presentation/d/16gm5Y9-Eu2Ow9BIgF6zNZo0ZgmGqK45bgv4e10j7YPg/edit?usp=sharing "알렉스 키리아키디스, 코스타스 매니아티스 공저 / 박창주 역, 쉽고 빠르게 배우는 Vue.js 2 프로그래밍" )  
-
-
- ![쉽고 빠르게 배우는 Vue.js 2 프로그래밍 ](http://image.yes24.com/momo/TopCate1342/MidCate003/134126153.jpg)
-
- 
+# ZJavascript ZFacebookVueStudy
+## Javascript ZFacebookVueStudy study practice (페이스북 Vue Study 실습한 소스)  
 
 
     

@@ -3,3 +3,4 @@ apis/movies/.idea/
 apis/pagination/.idea/
 apis/pagination/stories/.idea/
 .idea/
+**/node_modules
