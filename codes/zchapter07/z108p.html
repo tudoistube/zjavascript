@@ -11,8 +11,9 @@
         <div>
             <h1>Let's hear some stories!</h1>
             <ul class="list-group">
-              <story v-for="story in stories"
-                     :story="story" :favorite="favorite"></story>
+              <story v-for="story in stories" :key="story.plot"
+                     :story="story"
+                     :favorite="favorite"></story>
             </ul>
             <pre>{{ $data }}</pre>
         </div>
@@ -32,16 +33,18 @@
       </button>
       <span v-show="isFavorite" class="glyphicon glyphicon-star pull-right"
             aria-hidden="true"></span>
+      <pre>{{story}}</pre>
+      <pre>{{favorite}}</pre>
   </li>
 </template>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script>
 <script type="text/javascript">
 Vue.component('story', {
+template: '#story-template',
 //...099p.프로퍼티가 많아져서 엘리먼트가 지저분해지면 객체를 전달해서
 //        해당 객체의 프로퍼티를 표시할 수 있음.
     props: ['story', 'favorite'],
-    template: '#story-template',
     methods:{
         upvote: function(){
             this.story.upvotes += 1;

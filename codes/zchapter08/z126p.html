@@ -15,7 +15,7 @@
     <hr>
 
     <div class="row">
-      <food name="BigMcburger"></food>
+      <food name="Zingerburger"></food>
       <food name="BigMcDouble Burger"></food>
       <food name="BigMcShrimp Burger"></food>
     </div>
@@ -25,6 +25,7 @@
     <ul class="list-group">
       <li class="list-group-item" v-for="vote in votes.logs"> {{ vote }} </li>
     </ul>
+    <pre>{{ $data }}</pre>
   </div>
 </body>
 
@@ -55,7 +56,7 @@ Vue.component('food', {
   },
   methods: {
     vote: function (event) {
-      console.log(event);
+      console.log("template : ",event);
 
       //...this.naem 을 사용하는 대신, 이벤트의 엘리먼트의 텍스트에 접근함.
       var food = event.srcElement.textContent;
@@ -84,6 +85,7 @@ new Vue({
     countVote: function (food) {
       this.votes.count++;
       this.votes.logs.push(food + ' received a vote.')
+        console.log("Vue, countVote : ", food, this.votes);
     },
     reset: function () {
       this.votes = {

@@ -19,6 +19,7 @@
     <ul class="list-group">
       <li class="list-group-item" v-for="vote in logs"> {{ vote }} </li>
     </ul>
+    <pre>{{ $data }}</pre>
   </div>
 </body>
 
@@ -44,7 +45,7 @@ Vue.component('food', {
   },
   methods: {
     vote: function () {
-      console.log(event);
+      console.log("template : ",  event);
       this.foodVotes++
       this.$emit('voted', event.srcElement.textContent)
     }
@@ -60,7 +61,7 @@ new Vue({
   {
     countVote: function (food) {
       this.votes++;
-
+      console.log("Vue : ",  food);
       this.logs.push(food + ' received a vote.')
     }
   }

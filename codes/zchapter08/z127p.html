@@ -7,19 +7,18 @@
     <h1>컴포넌트 데이터를 부모 데이터와 동기화하기.</h1>
     <h2>사용자가 단 하나의 이야기만 선택할 수 있게 하기.</h2>
     <h2>Upvote 버튼을 클릭하면 사라짐.</h2>
+    <h3>codes\zchapter07\z108p.html 오류를 해결한 것.</h3>
     <div id="app">
       <div class="container">
         <h1>Let's hear some stories!</h1>
         <ul class="list-group">
-          <story v-for="story in stories"
+          <story v-for="story in stories" :key="story.plot"
                  :story="story"
                  :favorite="favorite"
                  @fav-update="updateFavorite">
           </story>
         </ul>
-        <pre>
-          {{ $data }}
-        </pre>
+        <pre>{{ $data }}</pre>
       </div>
     </div>
 </body>
@@ -36,6 +35,8 @@
       </button>
       <span v-show="isFavorite" class="glyphicon glyphicon-star pull-right"
             aria-hidden="true"></span>
+      <pre>{{story}}</pre>
+      <pre>{{favorite}}</pre>
   </li>
 </template>
 

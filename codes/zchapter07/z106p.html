@@ -11,7 +11,8 @@
         <div>
             <h1>Let's hear some stories!</h1>
             <ul class="list-group">
-              <story v-for="story in stories" :story="story"></story>
+              <story v-for="story in stories"  :key="story.plot"
+                     :story="story"></story>
             </ul>
             <pre>{{ $data }}</pre>
         </div>
@@ -26,6 +27,7 @@
       <button v-show="!story.voted" @click="upvote" class="btn btn-default">
           Upvote
       </button>
+      <pre>{{story}}</pre>
   </li>
 </template>
 
@@ -74,21 +76,6 @@ new Vue({
           },
       ],
       query: ' '
-    },
-    methods:{
-      storiesBy: function (writer) {
-        return this.stories.filter(function (story) {
-          return story.writer === writer
-        })
-      }
-    },
-    computed: {
-      search: function () {
-        var query = this.query
-        return this.stories.filter(function (story) {
-          return story.zbody.includes(query)
-        })
-      }
     }
 })
 </script>

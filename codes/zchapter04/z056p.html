@@ -11,7 +11,7 @@
               <!--
                 value, key, index 순서로 뽑아야 하는 것 같음.
                -->
-                <li v-for="(value, key, index) in story" class="list-group-item">
+                <li v-for="(value, key, index) in stories" class="list-group-item">
                     {{index}}. {{key}} : {{value}}
                 </li>
             </ul>
@@ -26,11 +26,28 @@
     new Vue({
         el: '.container',
         data: {
-          story: {
-              plot: "Someone ate my chocolate...",
-              writer: 'John',
-              upvotes: 47
-          }
+            stories: [
+              {
+                plot: "John ate my chocolate...",
+                writer: 'John',
+                upvotes: 23
+              },
+              {
+                plot: "Brown ate my chocolate...",
+                writer: 'Brown',
+                upvotes: 33
+              },
+              {
+                plot: "Jane ate my chocolate...",
+                writer: 'Jane',
+                upvotes: 43
+              },
+              {
+                plot: "Alex ate my chocolate...",
+                writer: 'Alex',
+                upvotes: 53
+              }
+          ]
         }
     })
 </script>
