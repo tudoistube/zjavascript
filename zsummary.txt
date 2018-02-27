@@ -1,0 +1,45 @@
+Vue Doc : https://vuejs.org/v2/guide/
+
+Begin by installing vue-cli
+and setting up the default Webpack project template. 
+	Use the standalone build, 
+	install vue-router. 
+	You can use ESLint 
+	and install the test components
+	
+		$ npm install --global vue-cli
+		$ 
+		
+		$ cd budgeterbium
+		$ npm install
+		
+To get started:
+  cd zvueBudget
+  $ npm run dev
+  http://localhost:8080/#/
+  Outputs : A page with "Welcome to Your Vue.js App" is shown up.
+		
+
+Install the dependencies and save them into package.json.
+	use the excellent vuex. 
+		The application will need to manage data 
+		and share information between components. 
+
+	use localforage to provide a consistent, clean API. 
+		Since we will be using local storage.
+		
+	use Bulma to add a little bit of styling, and rely on SCSS.
+	
+		$ npm install --save vuex bulma localforage
+		$ npm install --save-dev sass-loader node-sass
+		
+To get started:
+  cd zvueBudget
+  $ npm run dev
+  http://localhost:8080/#/
+  Outputs : A page with "Welcome to Your Vue.js App" is shown up.
+Or
+To get a working server:
+  $ npm install --save-dev babel-runtime  
+  
+Step3.01.taskSources : https://github.com/matthiaswh/budgeterbium/commit/9dec94f428cf234f6492fcc2ecd9781b4f6c213f

@@ -1,7 +1,13 @@
-# ZJavascript ZVueBudget
-## Javascript ZVueBudget study practice (''Matthias Hager' Tutorial 보고 실습한 소스 및 Summary' 책 보고 실습한 소스)  
+# ZJavascript ZVuejs2DoIt
+## Javascript ZVuejs2DoIt study practice ('Do it! Vue.js 입문 예제로 이해하고 실전 프로젝트로 완성한다!' 책 보고 실습한 소스)  
 
-### zvueBudget ['Matthias Hager' Tutorial 보고 실습한 소스 및 Summary](https://matthiashager.com/ "Matthias Hager 의 Tutorial 보고 실습한 소스" )  
+### zvuejs2DoIt ['Do it! Vue.js 입문 예제로 이해하고 실전 프로젝트로 완성한다!' 책 보고 실습한 소스 및 Summary](https://docs.google.com/presentation/d/16gm5Y9-Eu2Ow9BIgF6zNZo0ZgmGqK45bgv4e10j7YPg/edit?usp=sharing "장기효 저, Do it! Vue.js" )  
+### Original Sources from ['joshua1988's Git ](https://github.com/joshua1988/doit-vuejs "장기효 저, Do it! Vue.js 입문 예제 코드 저장소" )  
+
+
+ ![Do it! Vue.js 입문 예제로 이해하고 실전 프로젝트로 완성한다! ](http://image.yes24.com/momo/TopCate0001/kepub/X_862508.jpg)
+
+ 
 
 
     
