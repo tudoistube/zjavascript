@@ -1,0 +1,14 @@
+{
+  "name": "znode_17_expressrouting",
+  "version": "1.0.0",
+  "description": "",
+  "main": "znode_17_ExpressRouting.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*"
+  },
+  "author": "",
+  "license": "ISC"
+}
