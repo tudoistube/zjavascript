@@ -1,17 +1,12 @@
-ZJavascript
-============
+# ZJavascript ZegoingNodeJs
+## Javascript zegoingNodeJs study practice ('생활코딩 WEB2 - Node.js' 강좌 보고 실습한 소스)  
 
-## Branch Description  
+### zegoingNodeJs ['생활코딩 WEB2 - Node.js' 강좌 보고 실습한 소스 및 Summary](https://docs.google.com/presentation/d/16gm5Y9-Eu2Ow9BIgF6zNZo0ZgmGqK45bgv4e10j7YPg/edit?usp=sharing "알렉스 키리아키디스, 코스타스 매니아티스 공저 / 박창주 역, 생활코딩 WEB2 - Node.js" )  
 
-### zbasic ['처음 만나는 자바스크립트' 책 보고 실습한 소스](http://www.yes24.com/24/goods/36154711?scode=032&OzSrank=1 "a good basic book on javascript and jQuery" )  
 
-### zjquery ['jQuery 입문'](http://www.yes24.com/24/goods/7865910?scode=032&OzSrank=5 "a good basic book on jQuery" )  
+ ![생활코딩 WEB2 - Node.js ](https://opentutorials.org/course/3332)
 
-### zopentutorials ['생활코딩 :: 웹애플리케이션 만들기' 강좌 보고 실습한 소스](https://opentutorials.org/course/1688 "a good basic lecture on javascript and CSS" )  
 
-### zvuejs2Start ['Vue.js 2 시작하기' 책 보고 실습한 소스](http://www.acornpub.co.kr/book/learn-vuejs2 "Learning Vue.js 2 by Olga Filipova" )  
-
-### zvuejs2EasyQuick ['쉽고 빠르게 배우는 Vue.js 2 프로그래밍' 책 보고 실습한 소스](http://www.yes24.com/24/goods/44271600?scode=032&OzSrank=1 "쉽고 빠르게 배우는 Vue.js 2 프로그래밍" )  
 
     
 책 보면서 실습한 소스임.  
