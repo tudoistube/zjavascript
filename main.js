@@ -6,12 +6,18 @@ var app = http.createServer(function(request,response){
     var _url = request.url;
     var queryData = url.parse(_url, true).query;
     var pathname = url.parse(_url, true).pathname;
+
+    console.log(`queryData.id : ${queryData.id}, pathname : ${pathname}`);
+
     if(pathname === '/'){
       if(queryData.id === undefined){
 
-        fs.readdir('./data', function(error, filelist){
+        fs.readdir('./data', function(err, filelist){
+          console.log(filelist);
+
           var title = 'Welcome';
           var description = 'Hello, Node.js';
+
           var list = '<ul>';
           var i = 0;
           while(i < filelist.length){
@@ -19,6 +25,7 @@ var app = http.createServer(function(request,response){
             i = i + 1;
           }
           list = list+'</ul>';
+
           var template = `
           <!doctype html>
           <html>
@@ -36,14 +43,11 @@ var app = http.createServer(function(request,response){
           `;
           response.writeHead(200);
           response.end(template);
-        })
-
-
+        });
 
       } else {
         fs.readdir('./data', function(error, filelist){
-          var title = 'Welcome';
-          var description = 'Hello, Node.js';
+
           var list = '<ul>';
           var i = 0;
           while(i < filelist.length){
@@ -51,6 +55,7 @@ var app = http.createServer(function(request,response){
             i = i + 1;
           }
           list = list+'</ul>';
+
           fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
             var title = queryData.id;
             var template = `
