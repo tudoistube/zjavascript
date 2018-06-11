@@ -3,35 +3,39 @@ var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
 
-function templateHtml(title, list, body, link){
-  return `
-  <!doctype html>
-  <html>
-  <head>
-    <title>WEB - ${title}</title>
-    <meta charset="utf-8">
-  </head>
-  <body>
-    <h1><a href="/">WEB run by PM2</a></h1>
-    <h2>pm2 start main.js --watch</h2>
-    <h2>pm2 log</h2>
-    ${list}
-    ${link}
-    ${body}
-  </body>
-  </html>
-  `;
-}
+/*...refactoring */
+var template = {
 
-function templateList(filelist){
-    var list = '<ul>';
-    var i = 0;
-    while(i < filelist.length){
-      list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
-      i = i + 1;
-    }
-    list = list+'</ul>';
-    return list;
+  html: function(title, list, body, link){
+    return `
+          <!doctype html>
+          <html>
+          <head>
+            <title>WEB - ${title}</title>
+            <meta charset="utf-8">
+          </head>
+          <body>
+            <h1><a href="/">WEB run by PM2</a></h1>
+            <h2>pm2 start main.js --watch</h2>
+            <h2>pm2 log</h2>
+            ${list}
+            ${link}
+            ${body}
+          </body>
+          </html>
+          `;
+  },
+  list: function(filelist){
+      var list = '<ul>';
+      var i = 0;
+      while(i < filelist.length){
+        list = list + `<li><a href="/?id=${filelist[i]}">${filelist[i]}</a></li>`;
+        i = i + 1;
+      }
+      list = list+'</ul>';
+      return list;
+  }
+
 }
 
 var app = http.createServer(function(request,response){
@@ -50,11 +54,11 @@ var app = http.createServer(function(request,response){
           var description = 'Hi, Node.js';
           var body = `<h2>${title}</h2> ${description}`;
           var link = '<a href="/create">create</a>';
-          var list = templateList(filelist);
-          var template = templateHtml(title, list, body, link);
+          var list = template.list(filelist);
+          var html = template.html(title, list, body, link);
 
           response.writeHead(200);
-          response.end(template);
+          response.end(html);
         });
 
       } else {
@@ -69,11 +73,11 @@ var app = http.createServer(function(request,response){
                           <input type="hidden" name="id" value="${title}">
                           <input type="submit" value="delete">
                         </form>`;
-            var list = templateList(filelist);
-            var template = templateHtml(title, list, body, link);
+            var list = template.list(filelist);
+            var html = template.html(title, list, body, link);
 
             response.writeHead(200);
-            response.end(template);
+            response.end(html);
           });
         });
       }
@@ -89,11 +93,11 @@ var app = http.createServer(function(request,response){
                       <p><input type="submit" name=""></p>
                     </form>`;
         var link = '';
-        var list = templateList(filelist);
-        var template = templateHtml(title, list, body, link);
+        var list = template.list(filelist);
+        var html = template.html(title, list, body, link);
 
         response.writeHead(200);
-        response.end(template);
+        response.end(html);
       });
 
     } else if(pathname === '/create_process'){
@@ -122,7 +126,7 @@ var app = http.createServer(function(request,response){
         fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
           var title = queryData.id;
           var link = `<a href="/create">create</a> <a href="/update?id=${title}">update</a>`;
-          var list = templateList(filelist);
+          var list = template.list(filelist);
 
           var body = `<h2>${title}</h2>
                       <form action="/update_process" method="post">
@@ -132,10 +136,10 @@ var app = http.createServer(function(request,response){
                         <p><input type="submit" name=""></p>
                       </form>`;
 
-          var template = templateHtml(title, list, body, link);
+          var html = template.html(title, list, body, link);
 
           response.writeHead(200);
-          response.end(template);
+          response.end(html);
         });
       });
 
@@ -182,8 +186,6 @@ var app = http.createServer(function(request,response){
       response.writeHead(404);
       response.end('Not found');
     }
-
-
-
 });
+
 app.listen(3000);
