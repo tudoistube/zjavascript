@@ -1,0 +1,6 @@
+<h1>HTML Entity</h1>
+<h2>Sanitize HTML</h2>
+<script>
+location.href="http://www.naver.com";
+</script>
+End...
