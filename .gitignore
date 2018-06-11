@@ -1,3 +1,7 @@
+### JoyWins ###
+hidden*/
+Serverside/
+
 
 # Created by https://www.gitignore.io/api/node,windows
 
@@ -60,6 +64,7 @@ typings/
 
 # dotenv environment variables file
 .env
+
 
 ### Windows ###
 # Windows thumbnail cache files
