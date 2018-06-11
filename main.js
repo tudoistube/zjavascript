@@ -15,6 +15,7 @@ function templateHtml(title, list, body){
     <h2>pm2 start main.js --watch</h2>
     <h2>pm2 log</h2>
     ${list}
+    <a href="/create">create</a>
     ${body}
   </body>
   </html>
@@ -46,7 +47,7 @@ var app = http.createServer(function(request,response){
           console.log(filelist);
 
           var title = 'Welcome';
-          var description = 'Hello, Node.js';
+          var description = 'Hi, Node.js';
           var body = `<h2>${title}</h2> ${description}`;
           var list = templateList(filelist);
           var template = templateHtml(title, list, body);
@@ -69,6 +70,23 @@ var app = http.createServer(function(request,response){
           });
         });
       }
+    } else if(pathname === '/create'){
+      fs.readdir('./data', function(err, filelist){
+        console.log(filelist);
+
+        var title = 'WEB - create';
+        var body = `<h2>${title}</h2>
+                    <form action="http://localhost:3000/proces_create" method="post">
+                      <p><input type="text" placeholder="title"></p>
+                      <p><textarea name="name" rows="8" cols="80" placeholder="description"></textarea></p>
+                      <p><input type="submit" name="" id=""></p>
+                    </form>`;
+        var list = templateList(filelist);
+        var template = templateHtml(title, list, body);
+
+        response.writeHead(200);
+        response.end(template);
+      });
     } else {
       response.writeHead(404);
       response.end('Not found');
