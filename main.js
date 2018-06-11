@@ -40,8 +40,6 @@ var app = http.createServer(function(request,response){
     var pathname = url.parse(_url, true).pathname;
     console.log(`queryData.id : ${queryData.id}, pathname : ${pathname}`);
 
-    var link = '<a href="/create">create</a> <a href="/update">update</a>';
-
     if(pathname === '/'){
       if(queryData.id === undefined){
 
@@ -65,7 +63,12 @@ var app = http.createServer(function(request,response){
           fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
             var title = queryData.id;
             var body = `<h2>${title}</h2> ${description}`;
-            var link = `<a href="/create">create</a> <a href="/update?id=${title}">update</a>`;
+            var link = `<a href="/create">create</a>
+                        <a href="/update?id=${title}">update</a>
+                        <form action="/delete_process" method="post">
+                          <input type="hidden" name="id" value="${title}">
+                          <input type="submit" value="delete">
+                        </form>`;
             var list = templateList(filelist);
             var template = templateHtml(title, list, body, link);
 
