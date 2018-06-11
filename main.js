@@ -3,8 +3,7 @@ var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
 
-
-function templateHtml(title, list, body){
+function templateHtml(title, list, body, link){
   return `
   <!doctype html>
   <html>
@@ -17,7 +16,7 @@ function templateHtml(title, list, body){
     <h2>pm2 start main.js --watch</h2>
     <h2>pm2 log</h2>
     ${list}
-    <a href="/create">create</a>
+    ${link}
     ${body}
   </body>
   </html>
@@ -25,7 +24,6 @@ function templateHtml(title, list, body){
 }
 
 function templateList(filelist){
-
     var list = '<ul>';
     var i = 0;
     while(i < filelist.length){
@@ -42,6 +40,8 @@ var app = http.createServer(function(request,response){
     var pathname = url.parse(_url, true).pathname;
     console.log(`queryData.id : ${queryData.id}, pathname : ${pathname}`);
 
+    var link = '<a href="/create">create</a> <a href="/update">update</a>';
+
     if(pathname === '/'){
       if(queryData.id === undefined){
 
@@ -51,8 +51,9 @@ var app = http.createServer(function(request,response){
           var title = 'Welcome';
           var description = 'Hi, Node.js';
           var body = `<h2>${title}</h2> ${description}`;
+          var link = '<a href="/create">create</a>';
           var list = templateList(filelist);
-          var template = templateHtml(title, list, body);
+          var template = templateHtml(title, list, body, link);
 
           response.writeHead(200);
           response.end(template);
@@ -64,8 +65,9 @@ var app = http.createServer(function(request,response){
           fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
             var title = queryData.id;
             var body = `<h2>${title}</h2> ${description}`;
+            var link = `<a href="/create">create</a> <a href="/update?id=${title}">update</a>`;
             var list = templateList(filelist);
-            var template = templateHtml(title, list, body);
+            var template = templateHtml(title, list, body, link);
 
             response.writeHead(200);
             response.end(template);
@@ -83,8 +85,9 @@ var app = http.createServer(function(request,response){
                       <p><textarea name="description" rows="8" cols="80" placeholder="description"></textarea></p>
                       <p><input type="submit" name=""></p>
                     </form>`;
+        var link = '';
         var list = templateList(filelist);
-        var template = templateHtml(title, list, body);
+        var template = templateHtml(title, list, body, link);
 
         response.writeHead(200);
         response.end(template);
