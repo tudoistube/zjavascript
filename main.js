@@ -80,7 +80,7 @@ var app = http.createServer(function(request,response){
 
         var title = 'WEB - create';
         var body = `<h2>${title}</h2>
-                    <form action="http://localhost:3000/create_process" method="post">
+                    <form action="/create_process" method="post">
                       <p><input type="text" name="title" placeholder="title"></p>
                       <p><textarea name="description" rows="8" cols="80" placeholder="description"></textarea></p>
                       <p><input type="submit" name=""></p>
@@ -113,6 +113,28 @@ var app = http.createServer(function(request,response){
         });
       });
 
+    } else if(pathname === '/update'){
+      fs.readdir('./data', function(error, filelist){
+
+        fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
+          var title = queryData.id;
+          var link = `<a href="/create">create</a> <a href="/update?id=${title}">update</a>`;
+          var list = templateList(filelist);
+
+          var body = `<h2>${title}</h2>
+                      <form action="/update_process" method="post">
+                        <p><input type="hidden" name="id" value=${title}></p>
+                        <p><input type="text" name="title" placeholder="title" value=${title}></p>
+                        <p><textarea name="description" rows="8" cols="80" placeholder="description">${description}</textarea></p>
+                        <p><input type="submit" name=""></p>
+                      </form>`;
+
+          var template = templateHtml(title, list, body, link);
+
+          response.writeHead(200);
+          response.end(template);
+        });
+      });
     } else {
       response.writeHead(404);
       response.end('Not found');
