@@ -138,6 +138,7 @@ var app = http.createServer(function(request,response){
           response.end(template);
         });
       });
+
     } else if(pathname === '/update_process'){
       var body = '';
       request.on('data', function(data){
@@ -157,8 +158,24 @@ var app = http.createServer(function(request,response){
           })
           console.log('Rename complete!');
         });
-        /*;
-        */
+      });
+
+    } else if(pathname === '/delete_process'){
+      var body = '';
+      request.on('data', function(data){
+        body = body + data;
+      });
+      request.on('end', function(){
+        var post = qs .parse(body);
+        var id = post.id;
+        console.log(`id : ${post.id}`);
+        // Assuming that 'path/file.txt' is a regular file.
+        fs.unlink(`data/${id}`, (err) => {
+          if (err) throw err;
+          response.writeHead(302, {Location: `/?id=${id}`});
+          response.end();
+          console.log(`delete ${id}...Okay!`);
+        });
       });
 
     } else {
