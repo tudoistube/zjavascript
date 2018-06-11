@@ -7,11 +7,13 @@ function templateHtml(title, list, body){
   <!doctype html>
   <html>
   <head>
-    <title>WEB1 - ${title}</title>
+    <title>WEB - ${title}</title>
     <meta charset="utf-8">
   </head>
   <body>
-    <h1><a href="/">WEB</a></h1>
+    <h1><a href="/">WEB run by PM2</a></h1>
+    <h2>pm2 start main.js --watch</h2>
+    <h2>pm2 log</h2>
     ${list}
     ${body}
   </body>
