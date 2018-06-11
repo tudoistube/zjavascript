@@ -2,6 +2,7 @@ var http = require('http');
 var fs = require('fs');
 var url = require('url');
 var qs = require('querystring');
+var path = require('path');
 
 var template = require('./lib/template');
 
@@ -31,7 +32,9 @@ var app = http.createServer(function(request,response){
       } else {
         fs.readdir('./data', function(error, filelist){
 
-          fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
+          var filteredId = path.parse(queryData.id).base;
+
+          fs.readFile(`data/${filteredId}`, 'utf8', function(err, description){
             var title = queryData.id;
             var body = `<h2>${title}</h2> ${description}`;
             var link = `<a href="/create">create</a>
@@ -90,7 +93,9 @@ var app = http.createServer(function(request,response){
     } else if(pathname === '/update'){
       fs.readdir('./data', function(error, filelist){
 
-        fs.readFile(`data/${queryData.id}`, 'utf8', function(err, description){
+      var filteredId = path.parse(queryData.id).base;
+
+      fs.readFile(`data/${filteredId}`, 'utf8', function(err, description){
           var title = queryData.id;
           var link = `<a href="/create">create</a> <a href="/update?id=${title}">update</a>`;
           var list = template.list(filelist);
@@ -140,8 +145,10 @@ var app = http.createServer(function(request,response){
         var post = qs .parse(body);
         var id = post.id;
         console.log(`id : ${post.id}`);
+
+        var filteredId = path.parse(id).base;
         // Assuming that 'path/file.txt' is a regular file.
-        fs.unlink(`data/${id}`, (err) => {
+        fs.unlink(`data/${filteredId}`, (err) => {
           if (err) throw err;
           response.writeHead(302, {Location: `/?id=${id}`});
           response.end();
