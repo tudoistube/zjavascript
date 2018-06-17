@@ -7,7 +7,29 @@ http.createServer(function (req, res) {
   // In case the client uses lower case for methods.
   req.method = req.method.toUpperCase();
   console.log(req.method + ' ' + req.url);
-  res.end('The current time is '+Date.now())
+
+  if (req.method !== 'GET') {
+    res.writeHead(501, {
+      'Content-Type': 'text/plain'
+    });
+    return res.end(req.method + ' is not implemented by this server.');
+  }
+
+
+    if (_url = /^\/employees$/i.exec(req.url)) {
+      res.writeHead(200);
+      return res.end(req.method + ' employees list');
+
+    } else if (_url = /^\/employees\/(\d+)$/i.exec(req.url)) {
+      res.writeHead(200);
+      return res.end(req.method + ' an employee info');
+
+    }
+    else {
+      // try to send the static file
+      res.writeHead(200);
+      res.end('static file maybe');
+    }
 
 }).listen(1337, '127.0.0.1');
 
