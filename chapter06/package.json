@@ -1,0 +1,15 @@
+{
+  "name": "chapter06",
+  "version": "1.0.0",
+  "description": "MEAN book example",
+  "main": "index.js",
+  "dependencies": {
+    "colors": "^1.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bretz & Ihrig",
+  "license": "BSD"
+}

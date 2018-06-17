@@ -1,0 +1,16 @@
+{
+  "name": "hapi-test",
+  "version": "0.1.0",
+  "description": "Hapi test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Peter Pluck",
+  "license": "ISC",
+  "dependencies": {
+    "debug": "^2.0.0",
+    "hapi": "^8.5.1",
+    "joi": "^6.4.1"
+  }
+}
